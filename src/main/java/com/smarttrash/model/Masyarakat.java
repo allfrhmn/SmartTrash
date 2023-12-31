@@ -9,7 +9,7 @@ package com.smarttrash.model;
  * @author Emilia Paradila S
  */
 
-    // membuat class Masyarakat yang berfungsi untuk mengatur data yang ada di dalam database
+// membuat class Masyarakat yang berfungsi untuk mengatur pemodelan data yang ada di dalam database
 public class Masyarakat {
     // deklarasi variabel
     private int idMasyarakat;

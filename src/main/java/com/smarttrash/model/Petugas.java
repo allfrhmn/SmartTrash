@@ -8,6 +8,8 @@ package com.smarttrash.model;
  *
  * @author imam
  */
+
+// membuat class Petugas yang berfungsi untuk mengatur pemodelan data yang ada di dalam database
 public class Petugas {
     // deklarasi variabel
     private int idPetugas;

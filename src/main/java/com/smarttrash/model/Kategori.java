@@ -8,7 +8,8 @@ package com.smarttrash.model;
  *
  * @author salma
  */
-// membuat class Kategori yang berfungsi untuk mengatur data yang ada di dalam database
+
+// membuat class Kategori yang berfungsi untuk mengatur pemodelan data yang ada di dalam database
 public class Kategori {
     // deklarasi variabel
     private int idKategori;

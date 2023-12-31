@@ -9,7 +9,7 @@ package com.smarttrash.model;
  * @author allfiandi
  */
 
-// membuat class Penjemputan yang berfungsi untuk mengatur data yang ada di dalam database
+// membuat class Penjemputan yang berfungsi untuk mengatur pemodelan data yang ada di dalam database
 public class Penjemputan {
     // deklarasi variabel
     private int idPenjemputan;

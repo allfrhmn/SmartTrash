@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
+// package dao ini berfungsi untuk mengatur data yang ada di dalam database
 package com.smarttrash.dao;
+
+/**
+ *
+ * @author imam
+ */
 
 // import libraries yang dibutuhkan
 import com.smarttrash.model.Petugas;
@@ -11,11 +17,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import com.smarttrash.db.MySqlConnection;
-
-/**
- *
- * @author imam
- */
 
 // membuat class PetugasDao yang berfungsi untuk mengatur data yang ada di dalam database
 public class PetugasDao {
