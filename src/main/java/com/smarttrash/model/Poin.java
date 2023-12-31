@@ -9,7 +9,7 @@ package com.smarttrash.model;
  * @author allfiandi
  */
 
-// membuat class Poin yang berfungsi untuk mengatur data yang ada di dalam database
+// membuat class Poin yang berfungsi untuk mengatur pemodelan data yang ada di dalam database
 public class Poin {
     // deklarasi variabel
     private int idPoin;

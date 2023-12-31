@@ -2,6 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+// package dao ini berfungsi untuk mengatur data yang ada di dalam database
 package com.smarttrash.dao;
 
 /**
@@ -9,8 +11,7 @@ package com.smarttrash.dao;
  * @author Emilia Paradila S
  */
 
-
-    // import libraries yang dibutuhkan
+// import libraries yang dibutuhkan
 import com.smarttrash.model.Masyarakat;
 import java.sql.*;
 import java.util.ArrayList;
@@ -97,5 +98,3 @@ public class MasyarakatDao {
         return list;
     }
 }
-    
-
