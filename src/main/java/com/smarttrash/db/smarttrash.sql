@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 29 Des 2023 pada 13.46
+-- Waktu pembuatan: 01 Jan 2024 pada 00.26
 -- Versi server: 8.0.30
 -- Versi PHP: 8.1.10
 
@@ -67,7 +67,7 @@ CREATE TABLE `masyarakat` (
 
 CREATE TABLE `penjemputan` (
   `id` int NOT NULL,
-  `tanggal_pemjemputan` varchar(100) NOT NULL,
+  `tanggal_penjemputan` varchar(100) NOT NULL,
   `status_penjemputan` varchar(255) NOT NULL,
   `keputusan_konfirmasi` varchar(255) NOT NULL,
   `tanggal_konfirmasi` varchar(100) NOT NULL,
