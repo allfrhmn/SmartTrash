@@ -258,4 +258,45 @@ public class PenjemputanFrame extends JFrame {
     public Petugas getPetugas() {
         return this.petugasList.get(this.petugasComboBox.getSelectedIndex());
     }
+    
+    // JTable untuk membuat tabel penjemputan
+    public JTable getPenjemputanTable() {
+        return this.penjemputanTable;
+    }
+
+    // TableModel untuk membuat table model penjemputan
+    public PenjemputanTableModel getPenjemputanTableModel() {
+        return this.penjemputanTableModel;
+    }
+    
+    // Method untuk menampilkan pesan alert
+    public void showAlertMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    // Method untuk menampilkan pesan sukses
+    public void showSuccessMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    // method untuk mengosongkan text field
+    public void clearTextField() {
+        this.tanggalPenjemputanTextField.setText("");
+        this.statusPenjemputanTextField.setText("");
+        this.keputusanKonfirmasiTextField.setText("");
+        this.tanggalKonfirmasiTextField.setText("");
+        this.tanggalRiwayatTextField.setText("");
+        this.masyarakatComboBox.setSelectedIndex(0);
+        this.petugasComboBox.setSelectedIndex(0);
+    }
+
+    // method addPenjemputan untuk menambahkan petugas ke dalam tabel
+    public void addPenjemputan(Penjemputan penjemputan) {
+        penjemputanTableModel.add(penjemputan);
+    }
+
+    // method deletePenjemputan untuk menghapus petugas dari tabel
+    public void deletePenjemputan() {
+        penjemputanTableModel.delete(penjemputanTable.getSelectedRow());
+    }
 }

@@ -199,15 +199,42 @@ public class PetugasFrame extends JFrame {
         return statusTextField.getText();
     }
 
+    // method JTable untuk mengambil tabel Petugas
+    public JTable getPetugasTable() {
+        return this.petugasTable;
+    }
+
+    // method PetugasTableModel untuk mengambil tabel model Petugas
+    public PetugasTableModel getPetugasTableModel() {
+        return this.petugasTableModel;
+    }
+
+    // Method untuk menampilkan pesan alert
+    public void showAlertMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    // Method untuk menampilkan pesan sukses
+    public void showSuccessMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // Method clearForm untuk menghapus data yang ada di dalam form
+    public void clearForm() {
+        namaTextField.setText("");
+        alamatTextArea.setText("");
+        noTelpTextField.setText("");
+        jabatanTextField.setText("");
+        statusTextField.setText("");
+    } 
+
     // method addPetugas untuk menambahkan petugas ke dalam tabel
     public void addPetugas(Petugas petugas) {
-        this.petugasList.add(petugas);
-        this.petugasTableModel.fireTableDataChanged();
+        petugasTableModel.add(petugas);
     }
 
     // method deletePetugas untuk menghapus petugas dari tabel
-    public void deletePetugas(int index) {
-        this.petugasList.remove(index);
-        this.petugasTableModel.fireTableDataChanged();
+    public void deletePetugas() {
+        petugasTableModel.delete(petugasTable.getSelectedRow());
     }
 }

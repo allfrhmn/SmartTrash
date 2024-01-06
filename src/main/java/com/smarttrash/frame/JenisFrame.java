@@ -133,14 +133,39 @@ public class JenisFrame extends JFrame {
         return this.kategoriList.get(kategoriComboBox.getSelectedIndex());
     }
 
+    // JTable untuk mendapatkan jenis
+    public JTable getJenisTable() {
+        return this.jenisTable;
+    }
+
+    // TableModel untuk mendapatkan jenis
+    public JenisTableModel getJenisTableModel() {
+        return jenisTableModel;
+    }
+
+    // Method untuk menampilkan pesan alert
+    public void showAlertMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    // Method untuk menampilkan pesan sukses
+    public void showSuccessMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // Method clearForm untuk menghapus data yang ada di dalam form
+    public void clearForm() {
+        namaTextField.setText("");
+        kategoriComboBox.setSelectedIndex(0);
+    } 
+    
     // method untuk menambahkan jenis
     public void addJenis(Jenis jenis) {
         jenisTableModel.add(jenis);
-        namaTextField.setText("");
     }
-
-    // menampilkan peringatan jika data jenis sudah ada
-    public void showAlert(String message) {
-        JOptionPane.showMessageDialog(this, message);
+    
+    // method untuk menghapus jenis
+    public void deleteJenis() {
+        jenisTableModel.delete(jenisTable.getSelectedRow());
     }
 }

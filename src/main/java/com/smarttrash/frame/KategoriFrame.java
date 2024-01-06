@@ -108,22 +108,38 @@ public class KategoriFrame extends JFrame {
         return this.namaTextField.getText();
     }
     
-    // method untuk menambahkan kategori
-    public void addKategori(Kategori kategori) {
-        this.kategoriList.add(kategori);
-        this.kategoriTableModel.fireTableDataChanged();
+    // JTable untuk membuat tabel kategori
+    public JTable getKategoriTable() {
+        return this.kategoriTable;
     }
 
-    // method untuk mengubah kategori
-    public void updateKategori(Kategori kategori) {
-        int index = this.kategoriList.indexOf(kategori);
-        this.kategoriList.set(index, kategori);
-        this.kategoriTableModel.fireTableDataChanged();
+    // TableModel untuk membuat tabel model kategori
+    public KategoriTableModel getKategoriTableModel() {
+        return this.kategoriTableModel;
+    }
+    
+     // Method untuk menampilkan pesan alert
+    public void showAlertMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    // Method untuk menampilkan pesan sukses
+    public void showSuccessMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // Method clearForm untuk menghapus data yang ada di dalam form
+    public void clearForm() {
+        namaTextField.setText("");
+    } 
+
+    // method untuk menambahkan kategori
+    public void addKategori(Kategori kategori) {
+        kategoriTableModel.add(kategori);
     }
 
     // method untuk menghapus kategori
-    public void removeKategori(int row) {
-        this.kategoriList.remove(row);
-        this.kategoriTableModel.fireTableDataChanged();
+    public void deleteKategori() {
+        kategoriTableModel.delete(kategoriTable.getSelectedRow());
     }
 }
