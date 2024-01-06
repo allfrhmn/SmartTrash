@@ -1,7 +1,15 @@
-// Tugas Besar Praktikum Pemrograman II - Kelompok 5 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*/
 
 // package ini berfungsi untuk menghubungkan aplikasi dengan database
 package com.smarttrash.db;
+
+/**
+ *
+ * @author allfiandi
+ */
 
 // import yang digunakan untuk menghubungkan aplikasi dengan database
 import java.sql.Connection;

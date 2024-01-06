@@ -6,7 +6,7 @@ package com.smarttrash.frame;
 
 /**
  *
- * @author allfiandi
+ * @author Deni P
  */
 
 // import library yang dibutuhkan untuk membuat frame Jenis

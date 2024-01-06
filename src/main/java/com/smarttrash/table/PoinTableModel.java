@@ -44,21 +44,21 @@ public class PoinTableModel extends AbstractTableModel {
 
     // Method getValueAt untuk mengembalikan nilai yang ada di dalam tabel
     public Object getValueAt(int row, int col) {
-        Poin rowItem = data.get(row);
+        Poin poin = data.get(row);
         // String value = "";
         // int valueInt = 0;
 
         switch (col) {
             case 0:
                 // valueInt = rowItem.getJumlahPoin();
-                return rowItem.getJumlahPoin();
+                return poin.getJumlahPoin();
                 // break;
             case 1:
-                return rowItem.getKategori().getNamaKategori();
+                return poin.getKategori().getNamaKategori();
                 // value = rowItem.getKategori().getNamaKategori();
                 // break;
             default:
-                return null;
+                return "";
                 // break;
             
         }
@@ -83,8 +83,8 @@ public class PoinTableModel extends AbstractTableModel {
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
     }
 
-    // Method remove untuk menghapus data dari tabel
-    public void remove(int row) {
+    // Method delete untuk menghapus data dari tabel
+    public void delete(int row) {
         data.remove(row);
         fireTableRowsDeleted(row, row);
     }

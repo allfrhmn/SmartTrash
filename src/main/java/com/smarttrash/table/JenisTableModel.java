@@ -1,5 +1,15 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
 // package table ini berisi class-class yang digunakan untuk mengatur tabel yang ada di dalam database
 package com.smarttrash.table;
+
+/**
+ *
+ * @author Deni P
+ */
 
 // import library yang dibutuhkan untuk membuat tabel
 import javax.swing.table.*;
@@ -12,11 +22,11 @@ public class JenisTableModel extends AbstractTableModel {
     private String[] columnNames = {"Nama", "Kategori"};
 
     // List yang berisi data yang akan dimasukkan ke dalam tabel
-    private List<Jenis> data;
+    private List<Jenis> list;
 
     // Konstruktor dari class JenisTableModel
-    public JenisTableModel(List<Jenis> data) {
-        this.data = data;
+    public JenisTableModel(List<Jenis> list) {
+        this.list = list;
     }
 
     // Method getColumnCount untuk mengembalikan jumlah kolom yang ada di dalam tabel
@@ -26,7 +36,7 @@ public class JenisTableModel extends AbstractTableModel {
 
     // Method getRowCount untuk mengembalikan jumlah baris yang ada di dalam tabel
     public int getRowCount() {
-        return data.size();
+        return list.size();
     }
 
     // Method getColumnName untuk mengembalikan nama kolom yang ada di dalam tabel
@@ -36,18 +46,16 @@ public class JenisTableModel extends AbstractTableModel {
 
     // Method getValueAt untuk mengembalikan nilai yang ada di dalam tabel
     public Object getValueAt(int row, int col) {
-        Jenis rowItem = data.get(row);
-        String value = "";
+        Jenis jenis = list.get(row);
 
         switch (col) {
             case 0:
-                value = rowItem.getNamaJenis();
-                break;
+                return jenis.getNamaJenis();
             case 1:
-                value = rowItem.getKategori().getNamaKategori();
-                break;
+                return jenis.getKategori().getNamaKategori();
+            default:
+                return "";
         }
-        return value;
     }
 
     // Method isCellEditable untuk mengembalikan boolean apakah cell dapat diubah atau tidak
@@ -57,13 +65,13 @@ public class JenisTableModel extends AbstractTableModel {
 
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Jenis jenis) {
-        data.add(jenis);
+        list.add(jenis);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
     }
 
-    // Method remove untuk menghapus data dari tabel
-    public void remove(int row) {
-        data.remove(row);
+    // Method delete untuk menghapus data dari tabel
+    public void delete(int row) {
+        list.remove(row);
         fireTableRowsDeleted(row, row);
     }    
 }

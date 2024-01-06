@@ -8,6 +8,7 @@ package com.smarttrash.frame;
  *
  * @author allfiandi
  */
+
 // import library yang dibutuhkan 
 import javax.swing.*;
 import java.awt.event.*;

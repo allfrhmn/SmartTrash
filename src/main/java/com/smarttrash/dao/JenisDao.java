@@ -1,4 +1,16 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+// package dao ini berfungsi untuk mengatur data yang ada di dalam database
 package com.smarttrash.dao;
+
+/**
+ * 
+ *  @author Deni P
+ * 
+*/
 
 // import libraries yang dibutuhkan
 import com.smarttrash.model.Jenis;

@@ -2,8 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 // package table ini berisi class-class yang digunakan untuk mengatur tabel yang ada di dalam database
 package com.smarttrash.table;
+
+/**
+ *
+ * @author salma
+ * 
+*/
 
 // import library yang dibutuhkan untuk membuat tabel
 import javax.swing.table.*;
@@ -16,11 +23,11 @@ public class KategoriTableModel extends AbstractTableModel {
     private String[] columnNames = {"Nama"};
 
     // List yang berisi data yang akan dimasukkan ke dalam tabel
-    private List<Kategori> data;
+    private List<Kategori> list;
 
     // Konstruktor dari class KategoriTableModel
-    public KategoriTableModel(List<Kategori> data) {
-        this.data = data;
+    public KategoriTableModel(List<Kategori> list) {
+        this.list = list;
     }
 
     // Method getColumnCount untuk mengembalikan jumlah kolom yang ada di dalam tabel
@@ -30,7 +37,7 @@ public class KategoriTableModel extends AbstractTableModel {
 
     // Method getRowCount untuk mengembalikan jumlah baris yang ada di dalam tabel
     public int getRowCount() {
-        return data.size();
+        return list.size();
     }
 
     // Method getColumnName untuk mengembalikan nama kolom yang ada di dalam tabel
@@ -40,15 +47,14 @@ public class KategoriTableModel extends AbstractTableModel {
 
     // Method getValueAt untuk mengembalikan nilai yang ada di dalam tabel
     public Object getValueAt(int row, int col) {
-        Kategori rowItem = data.get(row);
-        String value = "";
+        Kategori kategori = list.get(row);
 
         switch (col) {
             case 0:
-                value = rowItem.getNamaKategori();
-                break;
+                return kategori.getNamaKategori();
+            default:
+                return "";
         }
-        return value;
     }
 
     // Method isCellEditable untuk mengembalikan boolean apakah cell dapat diubah atau tidak
@@ -58,13 +64,13 @@ public class KategoriTableModel extends AbstractTableModel {
 
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Kategori kategori) {
-        data.add(kategori);
+        list.add(kategori);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
     }
 
     // Method delete untuk menghapus data dari tabel
     public void delete(int row) {
-        data.remove(row);
+        list.remove(row);
         fireTableRowsDeleted(row, row);
     }
 }

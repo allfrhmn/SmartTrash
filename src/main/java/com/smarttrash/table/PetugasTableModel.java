@@ -22,11 +22,11 @@ public class PetugasTableModel extends AbstractTableModel {
     private String[] columnNames = {"Nama", "Alamat", "Nomor Telepon", "Jabatan", "Status Pendaftaran"};
 
     // List yang berisi data yang akan dimasukkan ke dalam tabel
-    private List<Petugas> data;
+    private List<Petugas> list;
 
     // Konstruktor dari class PetugasTableModel
-    public PetugasTableModel(List<Petugas> data) {
-        this.data = data;
+    public PetugasTableModel(List<Petugas> list) {
+        this.list = list;
     }
 
     // Method getColumnCount untuk mengembalikan jumlah kolom yang ada di dalam tabel
@@ -36,7 +36,7 @@ public class PetugasTableModel extends AbstractTableModel {
 
     // Method getRowCount untuk mengembalikan jumlah baris yang ada di dalam tabel
     public int getRowCount() {
-        return data.size();
+        return list.size();
     }
 
     // Method getColumnName untuk mengembalikan nama kolom yang ada di dalam tabel
@@ -46,27 +46,22 @@ public class PetugasTableModel extends AbstractTableModel {
 
     // Method getValueAt untuk mengembalikan nilai yang ada di dalam tabel
     public Object getValueAt(int row, int col) {
-        Petugas rowItem = data.get(row);
-        String value = "";
+        Petugas petugas = list.get(row);
 
         switch (col) {
             case 0:
-                value = rowItem.getNama();
-                break;
+                return petugas.getNama();
             case 1:
-                value = rowItem.getAlamat();
-                break;
+                return petugas.getAlamat();
             case 2:
-                value = rowItem.getNoTelp();
-                break;
+                return petugas.getNoTelp();
             case 3:
-                value = rowItem.getJabatan();
-                break;
+                return petugas.getJabatan();
             case 4:
-                value = rowItem.getStatusPendaftaran();
-                break;
+                return petugas.getStatusPendaftaran();
+            default:
+                return "";
         }
-        return value;
     }
 
     // Method isCellEditable untuk mengembalikan nilai boolean apakah cell dapat diubah atau tidak
@@ -76,7 +71,13 @@ public class PetugasTableModel extends AbstractTableModel {
 
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Petugas petugas) {
-        data.add(petugas);
+        list.add(petugas);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
+    }
+
+    // Method delete untuk menghapus data dari tabel
+    public void delete(int row) {
+        list.remove(row);
+        fireTableRowsDeleted(row, row);
     }
 }
