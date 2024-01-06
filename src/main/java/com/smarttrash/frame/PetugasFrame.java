@@ -53,6 +53,7 @@ public class PetugasFrame extends JFrame {
     // constructor PetugasFrame untuk membuat frame Petugas
     public PetugasFrame(PetugasDao petugasDao) {
         // deklarasi variabel untuk membuat frame Petugas
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.petugasDao = petugasDao;
         this.petugasList = petugasDao.findAll();
         

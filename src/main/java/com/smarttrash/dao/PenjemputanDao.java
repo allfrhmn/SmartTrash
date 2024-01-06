@@ -26,7 +26,7 @@ public class PenjemputanDao {
     public int insert(Penjemputan penjemputan) {
         int result = -1;
         try(Connection connection = MySqlConnection.getInstance().getConnection();) {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO penjemputan (id, tanggal_penjemputan, status_penjemputan, keputusan_konfirmasi, jadwal_konfirmasi, tanggal_riwayat, id_masyarakat, id_petugas) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO penjemputan (id, tanggal_penjemputan, status_penjemputan, keputusan_konfirmasi, tanggal_konfirmasi, tanggal_riwayat, id_masyarakat, id_petugas) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setInt(1, 0);
             statement.setString(2, penjemputan.getTanggalPenjemputan());
             statement.setString(3, penjemputan.getStatusPenjemputan());
@@ -47,7 +47,7 @@ public class PenjemputanDao {
     public int update(Penjemputan penjemputan) {
         int result = -1;
         try(Connection connection = MySqlConnection.getInstance().getConnection();) {
-            PreparedStatement statement = connection.prepareStatement("UPDATE penjemputan SET tanggal_penjemputan = ?, status_penjemputan = ?, keputusan_konfirmasi = ?, jadwal_konfirmasi = ?, tanggal_riwayat = ?, id_masyarakat = ?, id_petugas = ? WHERE id = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE penjemputan SET tanggal_penjemputan = ?, status_penjemputan = ?, keputusan_konfirmasi = ?, tanggal_konfirmasi = ?, tanggal_riwayat = ?, id_masyarakat = ?, id_petugas = ? WHERE id = ?");
             statement.setString(1, penjemputan.getTanggalPenjemputan());
             statement.setString(2, penjemputan.getStatusPenjemputan());
             statement.setString(3, penjemputan.getKeputusanKonfirmasi());
@@ -82,7 +82,7 @@ public class PenjemputanDao {
     public List<Penjemputan> findAll() {
         List<Penjemputan> list = new ArrayList<>();
         try(Connection connection = MySqlConnection.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT penjemputan.id, penjemputan.tanggal_penjemputan, penjemputan.status_penjemputan, penjemputan.keputusan_konfirmasi, penjemputan.jadwal_konfirmasi, penjemputan.tanggal_riwayat, penjemputan.id_masyarakat, penjemputan.id_petugas, masyarakat.id AS id_masyarakat, masyarakat.nama AS nama_masyarakat, petugas.id AS id_petugas, petugas.nama AS nama_petugas " 
+            PreparedStatement statement = connection.prepareStatement("SELECT penjemputan.id, penjemputan.tanggal_penjemputan, penjemputan.status_penjemputan, penjemputan.keputusan_konfirmasi, penjemputan.tanggal_konfirmasi, penjemputan.tanggal_riwayat, penjemputan.id_masyarakat, penjemputan.id_petugas, masyarakat.id AS id_masyarakat, masyarakat.nama AS nama_masyarakat, petugas.id AS id_petugas, petugas.nama AS nama_petugas " 
             + " FROM penjemputan JOIN masyarakat ON penjemputan.id_masyarakat = masyarakat.id " 
             + " JOIN petugas ON penjemputan.id_petugas = petugas.id");) {
             try(ResultSet resultSet = statement.executeQuery();) {
@@ -92,7 +92,7 @@ public class PenjemputanDao {
                     penjemputan.setTanggalPenjemputan(resultSet.getString("tanggal_penjemputan"));
                     penjemputan.setStatusPenjemputan(resultSet.getString("status_penjemputan"));
                     penjemputan.setKeputusanKonfirmasi(resultSet.getString("keputusan_konfirmasi"));
-                    penjemputan.setTanggalKonfirmasi(resultSet.getString("jadwal_konfirmasi"));
+                    penjemputan.setTanggalKonfirmasi(resultSet.getString("tanggal_konfirmasi"));
                     penjemputan.setTanggalRiwayat(resultSet.getString("tanggal_riwayat"));
 
                     Masyarakat masyarakat = new Masyarakat();

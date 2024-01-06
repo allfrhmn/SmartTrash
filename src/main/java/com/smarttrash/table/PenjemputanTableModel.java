@@ -20,11 +20,11 @@ public class PenjemputanTableModel extends AbstractTableModel {
     String[] columnNames = {"Tanggal Penjemputan", "Status Penjemputan", "Keputusan Konfirmasi", "Jadwal Konfirmasi", "Tanggal Riwayat", "Nama Masyarakat", "Nama Petugas"};
 
     // List yang berisi data yang akan dimasukkan ke dalam tabel
-    private List<Penjemputan> data;
+    private List<Penjemputan> list;
 
     // Konstruktor dari class PenjemputanTableModel
-    public PenjemputanTableModel(List<Penjemputan> data) {
-        this.data = data;
+    public PenjemputanTableModel(List<Penjemputan> list) {
+        this.list = list;
     }
 
     // Method getColumnCount untuk mengembalikan jumlah kolom yang ada di dalam tabel
@@ -34,7 +34,7 @@ public class PenjemputanTableModel extends AbstractTableModel {
 
     // Method getRowCount untuk mengembalikan jumlah baris yang ada di dalam tabel
     public int getRowCount() {
-        return data.size();
+        return list.size();
     }
 
     // Method getColumnName untuk mengembalikan nama kolom yang ada di dalam tabel
@@ -44,33 +44,26 @@ public class PenjemputanTableModel extends AbstractTableModel {
 
     // Method getValueAt untuk mengembalikan nilai yang ada di dalam tabel
     public Object getValueAt(int row, int col) {
-        Penjemputan rowItem = data.get(row);
-        String value = "";
+        Penjemputan penjemputan = list.get(row);
 
         switch (col) {
             case 0:
-                value = rowItem.getTanggalPenjemputan();
-                break;
+                return penjemputan.getTanggalPenjemputan();
             case 1:
-                value = rowItem.getStatusPenjemputan();
-                break;
+                return penjemputan.getStatusPenjemputan();
             case 2:
-                value = rowItem.getKeputusanKonfirmasi();
-                break;
+                return penjemputan.getKeputusanKonfirmasi();
             case 3:
-                value = rowItem.getTanggalKonfirmasi();
-                break;
+                return penjemputan.getTanggalKonfirmasi();
             case 4:
-                value = rowItem.getTanggalRiwayat();
-                break;
+                return penjemputan.getTanggalRiwayat();
             case 5:
-                value = rowItem.getMasyarakat().getNama();
-                break;
+                return penjemputan.getMasyarakat().getNama();
             case 6:
-                value = rowItem.getPetugas().getNama();
-                break;
+                return penjemputan.getPetugas().getNama();
+            default:
+                return "";
         }
-        return value;
     }
     
     // Method isCellEditable untuk mengembalikan boolean apakah cell dapat diubah atau tidak
@@ -80,13 +73,13 @@ public class PenjemputanTableModel extends AbstractTableModel {
 
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Penjemputan penjemputan) {
-        data.add(penjemputan);
+        list.add(penjemputan);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
     }
 
     // Method delete untuk menghapus data dari tabel
     public void delete(int row) {
-        data.remove(row);
+        list.remove(row);
         fireTableRowsDeleted(row, row);
     }
 }
