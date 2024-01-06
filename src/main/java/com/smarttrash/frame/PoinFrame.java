@@ -54,8 +54,8 @@ public class PoinFrame extends JFrame {
         this.kategoriList = kategoriDao.findAll();
 
         // membuat label judul
-        titleLabel = new JLabel("Form Data Poin");
-        titleLabel.setBounds(250, 10, 300, 20);
+        titleLabel = new JLabel("Form Data Poin Sampah Elektronik");
+        titleLabel.setBounds(100, 10, 300, 20);
         titleLabel.setFont(new java.awt.Font("Arial", 1, 16));
 
         // membuat label jumlah poin
@@ -134,5 +134,31 @@ public class PoinFrame extends JFrame {
     // method untuk mendapatkan kategori
     public String getKategori() {
         return this.kategoriComboBox.getSelectedItem().toString();
+    }
+    
+    // Method untuk menampilkan pesan alert
+    public void showAlertMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    // Method untuk menampilkan pesan sukses
+    public void showSuccessMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    // Method clearForm untuk menghapus data yang ada di dalam form
+    public void clearForm() {
+        this.jumlahPoinTextField.setText("");
+        this.kategoriComboBox.setSelectedIndex(0);
+    } 
+
+    // method addPoin untuk menambahkan petugas ke dalam tabel
+    public void addPoin(Poin poin) {
+        poinTableModel.add(poin);
+    }
+
+    // method deletePoin untuk menghapus petugas dari tabel
+    public void deletePoin() {
+        poinTableModel.delete(poinTable.getSelectedRow());
     }
 }
