@@ -24,9 +24,9 @@ public class MainButton implements ActionListener {
     // method actionPerformed untuk mengatur button yang ada semua frame
     @Override
     public void actionPerformed(ActionEvent e) {
-//        if(e.getSource() == mainFrame.getButtonMasyarakat()) {
-//            mainFrame.showMasyarakatFrame();
-//        } 
+        if(e.getSource() == mainFrame.getButtonMasyarakat()) {
+            mainFrame.showMasyarakatFrame();
+        } 
         if(e.getSource() == mainFrame.getButtonPetugas()) {
             mainFrame.showPetugasFrame();
         }

@@ -19,8 +19,8 @@ import java.util.*;
 
 // class MainFrame untuk membuat semua frame
 public class MainFrame extends JFrame {
-    // deklarasi variabel yang dibutuhkan untuk membuat semua frame
-//    private MasyarakatFrame masyarakatFrame;
+//     deklarasi variabel yang dibutuhkan untuk membuat semua frame
+    private MasyarakatFrame masyarakatFrame;
     private PetugasFrame petugasFrame;
     private KategoriFrame kategoriFrame;
     private JenisFrame jenisFrame;
@@ -124,12 +124,12 @@ public class MainFrame extends JFrame {
         return buttonPoin;
     }
 
-//    public void showMasyarakatFrame() {
-//        if(masyarakatFrame == null) {
-//            masyarakatFrame = new MasyarakatFrame(masyarakatDao);
-//        }
-//        masyarakatFrame.setVisible(true);
-//    }
+    public void showMasyarakatFrame() {
+        if(masyarakatFrame == null) {
+            masyarakatFrame = new MasyarakatFrame(masyarakatDao);
+        }
+        masyarakatFrame.setVisible(true);
+    }
     
     public void showPetugasFrame() {
         if(petugasFrame == null) {

@@ -14,6 +14,7 @@ import javax.swing.*;
 import com.smarttrash.dao.MasyarakatDao;
 import com.smarttrash.model.Masyarakat;
 import com.smarttrash.table.MasyarakatTableModel;
+import com.smarttrash.actionlistener.masyarakat.*;
 
 // class MasyarakatFrame untuk membuat frame Masyarakat
 public class MasyarakatFrame extends JFrame {
@@ -119,6 +120,18 @@ public class MasyarakatFrame extends JFrame {
         // JButton untuk membuat tombol Export
         buttonExport = new JButton("Export");
         buttonExport.setBounds(540, 300, 100, 35);
+        
+        // Action Listener untuk membuat tombol Hapus
+        MasyarakatButtonHapus hapusActionListener = new MasyarakatButtonHapus(this, masyarakatDao);
+        buttonHapus.addActionListener(hapusActionListener);
+
+        // Action Listener untuk membuat tombol Simpan
+        MasyarakatButtonSimpan simpanActionListener = new MasyarakatButtonSimpan(this, masyarakatDao);
+        buttonSimpan.addActionListener(simpanActionListener);
+        
+        // Action Listener untuk membuat tombol Ubah
+        MasyarakatButtonUbah ubahActionListener = new MasyarakatButtonUbah(this, masyarakatDao);
+        buttonUbah.addActionListener(ubahActionListener);
 
         // JTable untuk membuat tabel Masyarakat
         masyarakatTable = new JTable();
