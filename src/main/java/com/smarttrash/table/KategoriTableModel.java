@@ -73,4 +73,15 @@ public class KategoriTableModel extends AbstractTableModel {
         list.remove(row);
         fireTableRowsDeleted(row, row);
     }
+    
+    // Method untuk mendapatkan objek yang ada di dalam tabel
+    public Kategori getKategoriAt(int row) {
+        return list.get(row);
+    }
+
+    // Method update untuk mengubah data yang ada di dalam tabel
+    public void update(Kategori kategori, int row) {
+        list.set(row, kategori);
+        fireTableRowsUpdated(row, row);
+    }
 }
