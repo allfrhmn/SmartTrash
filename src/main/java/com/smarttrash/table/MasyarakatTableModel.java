@@ -67,11 +67,22 @@ public class MasyarakatTableModel extends AbstractTableModel {
     public boolean isCellEditable(int row, int col) {
         return false;
     }
+    
+    // method untuk mendapatkan objek Masyarakat dari baris tertentu
+    public Masyarakat getMasyarakatAt(int row) {
+        return list.get(row);
+    }
 
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Masyarakat masyarakat) {
         list.add(masyarakat);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
+    }
+    
+    // Method update untuk mengubah data ke dalam tabel
+    public void update(Masyarakat masyarakat, int row) {
+        list.set(row, masyarakat);
+        fireTableRowsUpdated(row, row); 
     }
 
     // Method delete untuk menghapus data dari tabel
