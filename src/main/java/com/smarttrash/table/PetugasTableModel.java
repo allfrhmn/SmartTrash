@@ -68,6 +68,11 @@ public class PetugasTableModel extends AbstractTableModel {
     public boolean isCellEditable(int row, int col) {
         return false;
     }
+    
+    // method untuk mendapatkan objek Petugas dari baris tertentu
+    public Petugas getPetugasAt(int row) {
+        return list.get(row);
+    }
 
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Petugas petugas) {
@@ -79,5 +84,11 @@ public class PetugasTableModel extends AbstractTableModel {
     public void delete(int row) {
         list.remove(row);
         fireTableRowsDeleted(row, row);
+    }
+    
+    // Method update untuk mengubah data yang ada di dalam tabel
+    public void update(Petugas petugas, int row) {
+        list.set(row, petugas);
+        fireTableRowsUpdated(row, row);
     }
 }

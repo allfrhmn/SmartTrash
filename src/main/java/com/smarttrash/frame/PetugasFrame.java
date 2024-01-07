@@ -15,6 +15,9 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
+
+
+import com.smarttrash.actionlistener.petugas.*;
 import com.smarttrash.dao.PetugasDao;
 import com.smarttrash.model.Petugas;
 //import com.smarttrash.button.petugas.*;
@@ -129,6 +132,18 @@ public class PetugasFrame extends JFrame {
         // JButton untuk membuat tombol Export
         buttonExport = new JButton("Export");
         buttonExport.setBounds(540, 300, 100, 35);
+        
+        // Action Listener untuk membuat tombol Simpan
+            PetugasButtonSimpan simpanActionListener = new PetugasButtonSimpan(this, petugasDao);
+            buttonSimpan.addActionListener(simpanActionListener);
+
+        // Action Listener untuk membuat tombol Ubah
+           PetugasButtonUbah ubahActionListener = new PetugasButtonUbah(this, petugasDao);
+           buttonUbah.addActionListener(ubahActionListener);
+
+        // Action Listener untuk membuat tombol Hapus
+           PetugasButtonHapus hapusActionListener = new PetugasButtonHapus(this, petugasDao);
+           buttonHapus.addActionListener(hapusActionListener);
 
         // JTable untuk membuat tabel Petugas
         petugasTable = new JTable();
@@ -236,5 +251,10 @@ public class PetugasFrame extends JFrame {
     // method deletePetugas untuk menghapus petugas dari tabel
     public void deletePetugas() {
         petugasTableModel.delete(petugasTable.getSelectedRow());
+    }
+    
+    // method updatePetugas untuk mengubah data petugas di tabel
+    public void updatePetugas(Petugas petugas) {
+        petugasTableModel.update(petugas, petugasTable.getSelectedRow());
     }
 }
