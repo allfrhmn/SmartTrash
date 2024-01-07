@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 
+import com.smarttrash.actionlistener.kategori.*;
 import com.smarttrash.dao.KategoriDao;
 import com.smarttrash.model.Kategori;
 import com.smarttrash.table.KategoriTableModel;
@@ -56,15 +57,27 @@ public class KategoriFrame extends JFrame {
         // membuat button simpan
         buttonSimpan = new JButton("Simpan");
         buttonSimpan.setBounds(15, 100, 100, 35);
+        
+        // menambahkan action listener untuk button simpan
+        KategoriButtonSimpan simpanActionListener = new KategoriButtonSimpan(this, kategoriDao);
+        buttonSimpan.addActionListener(simpanActionListener);
 
         // membuat button ubah
         buttonUbah = new JButton("Ubah");
         buttonUbah.setBounds(120, 100, 100, 35);
 
+        // menambahkan action listener untuk button ubah
+        KategoriButtonUbah ubahActionListener = new KategoriButtonUbah(this, kategoriDao);
+        buttonUbah.addActionListener(ubahActionListener);
+
         // membuat button hapus
         buttonHapus = new JButton("Hapus");
         buttonHapus.setBounds(225, 100, 100, 35);
         
+        // menambahkan action listener untuk button hapus
+        KategoriButtonHapus hapusActionListener = new KategoriButtonHapus(this, kategoriDao);
+        buttonHapus.addActionListener(hapusActionListener);
+
         // JTable untuk membuat tabel kategori
         kategoriTable = new JTable();
 
@@ -75,18 +88,6 @@ public class KategoriFrame extends JFrame {
         // membuat table model untuk kategori
         kategoriTableModel = new KategoriTableModel(kategoriList);
         kategoriTable.setModel(kategoriTableModel);
-
-        // // menambahkan action listener untuk button simpan
-        // KategoriButtonSimpanActionListener simpanActionListener = new KategoriButtonSimpanActionListener(this, kategoriDao);
-        // buttonSimpan.addActionListener(simpanActionListener);
-
-        // // menambahkan action listener untuk button ubah
-        // KategoriButtonUbahActionListener ubahActionListener = new KategoriButtonUbahActionListener(this, kategoriDao);
-        // buttonUbah.addActionListener(ubahActionListener);
-
-        // // menambahkan action listener untuk button hapus
-        // KategoriButtonHapusActionListener hapusActionListener = new KategoriButtonHapusActionListener(this, kategoriDao);
-        // buttonHapus.addActionListener(hapusActionListener);
 
         // menambahkan komponen ke frame
         this.add(titleLabel);
@@ -118,7 +119,7 @@ public class KategoriFrame extends JFrame {
         return this.kategoriTableModel;
     }
     
-     // Method untuk menampilkan pesan alert
+    // Method untuk menampilkan pesan alert
     public void showAlertMessage(String message) {
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
@@ -138,6 +139,11 @@ public class KategoriFrame extends JFrame {
         kategoriTableModel.add(kategori);
     }
 
+    // method untuk mengubah kategori
+    public void updateKategori(Kategori kategori, int row) {
+        kategoriTableModel.update(kategori, row);
+    }
+    
     // method untuk menghapus kategori
     public void deleteKategori() {
         kategoriTableModel.delete(kategoriTable.getSelectedRow());
