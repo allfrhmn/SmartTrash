@@ -46,21 +46,7 @@ public class JenisFrame extends JFrame {
 
     // constructor JenisFrame untuk membuat frame Jenis
     public JenisFrame(JenisDao jenisDao, KategoriDao kategoriDao) {
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                if(JOptionPane.showConfirmDialog(
-                        JenisFrame.this,
-                        "Apakah anda yakin ingin keluar?",
-                        "Exit", JOptionPane.YES_NO_OPTION
-                ) == JOptionPane.YES_OPTION) {
-                    System.exit(0);
-                }
-                else {
-                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                }
-            }
-        });
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // deklarasi variabel untuk membuat frame Jenis
         this.jenisDao = jenisDao;

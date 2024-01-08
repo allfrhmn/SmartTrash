@@ -35,7 +35,7 @@ public class JenisButtonSimpan implements ActionListener {
 
         // Validasi data
         if (nama.isEmpty() || kategori == null) {
-            jenisFrame.showAlertMessage("Nama dan kategori harus diisi.");
+            jenisFrame.showAlertMessage("Nama dan kategori harus diisi!");
             return;
         }
 
@@ -49,11 +49,11 @@ public class JenisButtonSimpan implements ActionListener {
 
         // Menangani hasil operasi insert
         if (result >= 0) {
-            jenisFrame.showSuccessMessage("Data berhasil disimpan.");
+            jenisFrame.showSuccessMessage("Data berhasil disimpan!");
             jenisFrame.addJenis(jenis);
             jenisFrame.clearForm();
         } else {
-            jenisFrame.showAlertMessage("Terjadi kesalahan saat menyimpan data.");
+            jenisFrame.showAlertMessage("Terjadi kesalahan saat menyimpan data!");
         }
     }
 }

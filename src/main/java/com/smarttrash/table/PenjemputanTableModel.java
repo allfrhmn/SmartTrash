@@ -17,7 +17,7 @@ import com.smarttrash.model.Penjemputan;
 // Membuat class PenjemputanTableModel yang berfungsi untuk mengatur tabel yang ada di dalam database
 public class PenjemputanTableModel extends AbstractTableModel {
     // Array yang berisi beberapa kolom
-    String[] columnNames = {"Tanggal Penjemputan", "Status Penjemputan", "Keputusan Konfirmasi", "Jadwal Konfirmasi", "Tanggal Riwayat", "Nama Masyarakat", "Nama Petugas"};
+    String[] columnNames = {"Tanggal Penjemputan", "Status Penjemputan", "Keputusan Konfirmasi", "Tanggal Konfirmasi", "Tanggal Riwayat", "Nama Masyarakat", "Nama Petugas"};
 
     // List yang berisi data yang akan dimasukkan ke dalam tabel
     private List<Penjemputan> list;

@@ -48,10 +48,10 @@ public class JenisButtonHapus implements ActionListener {
         // Menangani hasil operasi delete
         if (result >= 0) {
             jenisFrame.getJenisTableModel().delete(selectedRow);
-            jenisFrame.showSuccessMessage("Data berhasil dihapus.");
+            jenisFrame.showSuccessMessage("Data berhasil dihapus!");
             jenisFrame.clearForm();
         } else {
-            jenisFrame.showAlertMessage("Terjadi kesalahan saat menghapus data.");
+            jenisFrame.showAlertMessage("Terjadi kesalahan saat menghapus data!");
         }
     }
 }

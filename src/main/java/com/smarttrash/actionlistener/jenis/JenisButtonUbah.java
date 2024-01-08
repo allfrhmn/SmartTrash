@@ -29,7 +29,7 @@ public class JenisButtonUbah implements ActionListener {
         this.jenisDao = jenisDao;
     }
 
-    // Method actionPerformed untuk mengatur aksi yang dilakukan saat button ubah diklik
+   // Method actionPerformed untuk mengatur aksi yang dilakukan saat button ubah diklik
     @Override
     public void actionPerformed(ActionEvent e) {
         // Mendapatkan data dari frame
@@ -59,7 +59,7 @@ public class JenisButtonUbah implements ActionListener {
 
         // Menangani hasil operasi update
         if (result >= 0) {
-            jenisFrame.showSuccessMessage("Data berhasil diubah.");
+            jenisFrame.showSuccessMessage("Data berhasil diubah!");
             jenisFrame.getJenisTableModel().update(jenis, selectedRow);
             jenisFrame.clearForm(); 
         } else {
