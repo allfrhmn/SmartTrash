@@ -34,8 +34,10 @@ public class JenisButtonHapus implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Mendapatkan baris yang dipilih di tabel
         int selectedRow = jenisFrame.getJenisTable().getSelectedRow();
+        
+        // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            jenisFrame.showAlertMessage("Pilih data yang akan dihapus!");
+            jenisFrame.showAlertMessage("Pilih data yang akan diubah!");
             return;
         }
 
@@ -51,7 +53,7 @@ public class JenisButtonHapus implements ActionListener {
             jenisFrame.showSuccessMessage("Data berhasil dihapus!");
             jenisFrame.clearForm();
         } else {
-            jenisFrame.showAlertMessage("Terjadi kesalahan saat menghapus data!");
+            jenisFrame.showAlertMessage("Data gagal dihapus!");
         }
     }
 }

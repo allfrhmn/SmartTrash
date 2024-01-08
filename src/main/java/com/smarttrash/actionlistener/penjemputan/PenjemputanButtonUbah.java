@@ -44,13 +44,19 @@ public class PenjemputanButtonUbah implements ActionListener {
 
         // Validasi data
         if (tanggalPenjemputan.isEmpty() || statusPenjemputan.isEmpty() || keputusanKonfirmasi.isEmpty() || tanggalKonfirmasi.isEmpty() || tanggalRiwayat.isEmpty() || masyarakat == null || petugas == null) {
-            penjemputanFrame.showAlertMessage("Pilih data yang akan diubah!");
+            penjemputanFrame.showAlertMessage("Mohon lengkapi semua data!");
             return;
         }
 
         // Mendapatkan baris yang dipilih di tabel
         int selectedRow = penjemputanFrame.getPenjemputanTable().getSelectedRow();
-
+        
+        // Validasi: Memastikan baris terpilih
+        if (selectedRow == -1) {
+            penjemputanFrame.showAlertMessage("Pilih data yang akan diubah!");
+            return;
+        }
+        
         // Membuat objek Penjemputan dari baris yang dipilih
         Penjemputan penjemputan = penjemputanFrame.getPenjemputanTableModel().getPenjemputanAt(selectedRow);
 
@@ -68,11 +74,11 @@ public class PenjemputanButtonUbah implements ActionListener {
 
         // Menangani hasil operasi update
         if (result >= 0) {
-            penjemputanFrame.showSuccessMessage("Data berhasil diubah.");
+            penjemputanFrame.showSuccessMessage("Data berhasil diubah!");
             penjemputanFrame.getPenjemputanTableModel().update(penjemputan, selectedRow);
             penjemputanFrame.clearForm(); 
         } else {
-            penjemputanFrame.showAlertMessage("Terjadi kesalahan saat mengubah data.");
+            penjemputanFrame.showAlertMessage("Data gagal diubah!");
         }
     }
 }
