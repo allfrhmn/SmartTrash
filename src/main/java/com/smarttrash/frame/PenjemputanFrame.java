@@ -61,9 +61,9 @@ public class PenjemputanFrame extends JFrame {
 
     // constructor PenjemputanFrame untuk membuat frame Penjemputan
     public PenjemputanFrame(PenjemputanDao penjemputanDao, MasyarakatDao masyarakatDao, PetugasDao petugasDao) {
+        // deklarasi variabel untuk membuat frame Penjemputan
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // deklarasi variabel untuk membuat frame Penjemputan
         this.penjemputanDao = penjemputanDao;
         this.masyarakatDao = masyarakatDao;
         this.petugasDao = petugasDao;

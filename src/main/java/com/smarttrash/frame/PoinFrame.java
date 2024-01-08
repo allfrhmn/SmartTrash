@@ -44,9 +44,9 @@ public class PoinFrame extends JFrame {
 
     // constructor PoinFrame untuk membuat frame Poin
     public PoinFrame(PoinDao poinDao, KategoriDao kategoriDao) {
+        // deklarasi variabel untuk membuat frame Poin
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // deklarasi variabel untuk membuat frame Poin
         this.poinDao = poinDao;
         this.kategoriDao = kategoriDao;
 

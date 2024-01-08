@@ -52,7 +52,7 @@ public class JenisTableModel extends AbstractTableModel {
             case 0:
                 return jenis.getNamaJenis();
             case 1:
-                return jenis.getKategori().getNamaKategori();
+                return (jenis.getKategori() != null) ? jenis.getKategori().getNamaKategori() : "";
             default:
                 return "";
         }
@@ -63,10 +63,21 @@ public class JenisTableModel extends AbstractTableModel {
         return false;
     }
 
+    // Method untuk mendapatkan objek yang ada di dalam tabel
+    public Jenis getJenisAt(int row) {
+        return list.get(row);
+    }
+    
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Jenis jenis) {
         list.add(jenis);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
+    }
+
+    // Method update untuk mengubah data yang ada di dalam tabel
+    public void update(Jenis jenis, int row) {
+        list.set(row, jenis);
+        fireTableRowsUpdated(row, row);
     }
 
     // Method delete untuk menghapus data dari tabel

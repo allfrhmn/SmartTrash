@@ -49,6 +49,8 @@ public class MasyarakatFrame extends JFrame {
     // constructor MasyarakatFrame untuk membuat frame Masyarakat
     public MasyarakatFrame(MasyarakatDao masyarakatDao) {
         // deklarasi variabel untuk membuat frame Masyarakat
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+     
         this.masyarakatDao = masyarakatDao;
         this.masyarakatList = masyarakatDao.findAll();
         
