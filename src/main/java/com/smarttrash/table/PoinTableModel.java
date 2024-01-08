@@ -50,31 +50,23 @@ public class PoinTableModel extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                // valueInt = rowItem.getJumlahPoin();
                 return poin.getJumlahPoin();
-                // break;
             case 1:
-                return poin.getKategori().getNamaKategori();
-                // value = rowItem.getKategori().getNamaKategori();
-                // break;
+                return (poin.getKategori() != null) ? poin.getKategori().getNamaKategori() : "";
             default:
                 return "";
-                // break;
             
         }
-        
-        // if (col == 0) {
-        //     return valueInt;
-        // } else if (col == 1) {
-        //     return value;
-        // } else {
-        //     return null;
-        // }
     }
 
     // Method isCellEditable untuk mengembalikan boolean apakah cell dapat diubah atau tidak
     public boolean isCellEditable(int row, int col) {
         return false;
+    }
+
+    // Method untuk mendapatkan objek yang ada di dalam tabel
+    public Poin getPoin(int row) {
+        return data.get(row);
     }
 
     // Method add untuk menambahkan data ke dalam tabel
@@ -83,6 +75,12 @@ public class PoinTableModel extends AbstractTableModel {
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
     }
 
+    // Method update untuk mengubah data yang ada di dalam tabel
+    public void update(Poin poin, int row) {
+        data.set(row, poin);
+        fireTableRowsUpdated(row, row);
+    }
+    
     // Method delete untuk menghapus data dari tabel
     public void delete(int row) {
         data.remove(row);

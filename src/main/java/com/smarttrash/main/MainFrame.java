@@ -19,7 +19,7 @@ import java.util.*;
 
 // class MainFrame untuk membuat semua frame
 public class MainFrame extends JFrame {
-//     deklarasi variabel yang dibutuhkan untuk membuat semua frame
+// deklarasi variabel yang dibutuhkan untuk membuat semua frame
     private MasyarakatFrame masyarakatFrame;
     private PetugasFrame petugasFrame;
     private KategoriFrame kategoriFrame;
@@ -44,7 +44,22 @@ public class MainFrame extends JFrame {
     private JButton buttonPoin;
 
     public MainFrame() {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if(JOptionPane.showConfirmDialog(
+                        MainFrame.this,
+                        "Apakah anda yakin ingin keluar?",
+                        "Exit", JOptionPane.YES_NO_OPTION
+                ) == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+                else {
+                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        
         this.setSize(300,300);
 
         this.titleLabel = new JLabel("Smart Trash Apps");
@@ -64,7 +79,7 @@ public class MainFrame extends JFrame {
         this.penjemputanDao = new PenjemputanDao();
         this.poinDao = new PoinDao();
 
-//        this.masyarakatFrame = new MasyarakatFrame(masyarakatDao);
+        this.masyarakatFrame = new MasyarakatFrame(masyarakatDao);
         this.petugasFrame = new PetugasFrame(petugasDao);
         this.kategoriFrame = new KategoriFrame(kategoriDao);
         this.jenisFrame = new JenisFrame(jenisDao, kategoriDao);
@@ -167,7 +182,6 @@ public class MainFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-//        System.out.println("Ini Tugas PP2 BWANG!!");
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

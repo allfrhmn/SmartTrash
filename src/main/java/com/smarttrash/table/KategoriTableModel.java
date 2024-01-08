@@ -62,26 +62,26 @@ public class KategoriTableModel extends AbstractTableModel {
         return false;
     }
 
+    // Method untuk mendapatkan objek yang ada di dalam tabel
+    public Kategori getKategoriAt(int row) {
+        return list.get(row);
+    }
+    
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Kategori kategori) {
         list.add(kategori);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
+    }
+    
+    // Method update untuk mengubah data yang ada di dalam tabel
+    public void update(Kategori kategori, int row) {
+        list.set(row, kategori);
+        fireTableRowsUpdated(row, row);
     }
 
     // Method delete untuk menghapus data dari tabel
     public void delete(int row) {
         list.remove(row);
         fireTableRowsDeleted(row, row);
-    }
-    
-    // Method untuk mendapatkan objek yang ada di dalam tabel
-    public Kategori getKategoriAt(int row) {
-        return list.get(row);
-    }
-
-    // Method update untuk mengubah data yang ada di dalam tabel
-    public void update(Kategori kategori, int row) {
-        list.set(row, kategori);
-        fireTableRowsUpdated(row, row);
     }
 }

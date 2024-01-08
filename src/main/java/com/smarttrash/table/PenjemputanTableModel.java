@@ -58,9 +58,9 @@ public class PenjemputanTableModel extends AbstractTableModel {
             case 4:
                 return penjemputan.getTanggalRiwayat();
             case 5:
-                return penjemputan.getMasyarakat().getNama();
+                return (penjemputan.getMasyarakat() != null) ? penjemputan.getMasyarakat().getNama() : "";
             case 6:
-                return penjemputan.getPetugas().getNama();
+                return (penjemputan.getPetugas() != null) ? penjemputan.getPetugas().getNama() : "";
             default:
                 return "";
         }
@@ -71,10 +71,21 @@ public class PenjemputanTableModel extends AbstractTableModel {
         return false;
     }
 
+    // Method getPenjemputanAt untuk mengembalikan objek Penjemputan yang ada di dalam tabel
+    public Penjemputan getPenjemputanAt(int row) {
+        return list.get(row);
+    }
+
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Penjemputan penjemputan) {
         list.add(penjemputan);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
+    }
+
+    // method update untuk mengubah data yang ada di dalam tabel
+    public void update(Penjemputan penjemputan, int row) {
+        list.set(row, penjemputan);
+        fireTableRowsUpdated(row, row);
     }
 
     // Method delete untuk menghapus data dari tabel

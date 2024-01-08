@@ -79,16 +79,16 @@ public class PetugasTableModel extends AbstractTableModel {
         list.add(petugas);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
     }
-
-    // Method delete untuk menghapus data dari tabel
-    public void delete(int row) {
-        list.remove(row);
-        fireTableRowsDeleted(row, row);
-    }
     
     // Method update untuk mengubah data yang ada di dalam tabel
     public void update(Petugas petugas, int row) {
         list.set(row, petugas);
         fireTableRowsUpdated(row, row);
+    }
+
+    // Method delete untuk menghapus data dari tabel
+    public void delete(int row) {
+        list.remove(row);
+        fireTableRowsDeleted(row, row);
     }
 }

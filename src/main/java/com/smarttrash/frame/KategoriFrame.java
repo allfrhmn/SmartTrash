@@ -14,10 +14,10 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 
-import com.smarttrash.actionlistener.kategori.*;
 import com.smarttrash.dao.KategoriDao;
 import com.smarttrash.model.Kategori;
 import com.smarttrash.table.KategoriTableModel;
+import com.smarttrash.actionlistener.kategori.*;
 
 public class KategoriFrame extends JFrame {
     // deklarasi variabel yang dibutuhkan untuk membuat frame Kategori
@@ -38,6 +38,9 @@ public class KategoriFrame extends JFrame {
 
     // constructor KategoriFrame untuk membuat frame Kategori
     public KategoriFrame(KategoriDao kategoriDao) {
+        // deklarasi variabel untuk membuat frame Kategori
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         this.kategoriDao = kategoriDao;
         this.kategoriList = kategoriDao.findAll();
 

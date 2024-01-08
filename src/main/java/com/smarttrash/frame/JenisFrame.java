@@ -20,6 +20,7 @@ import com.smarttrash.dao.KategoriDao;
 import com.smarttrash.model.Jenis;
 import com.smarttrash.model.Kategori;
 import com.smarttrash.table.JenisTableModel;
+import com.smarttrash.actionlistener.jenis.*;
 
 // class JenisFrame untuk membuat frame Jenis
 public class JenisFrame extends JFrame {
@@ -45,7 +46,21 @@ public class JenisFrame extends JFrame {
 
     // constructor JenisFrame untuk membuat frame Jenis
     public JenisFrame(JenisDao jenisDao, KategoriDao kategoriDao) {
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if(JOptionPane.showConfirmDialog(
+                        JenisFrame.this,
+                        "Apakah anda yakin ingin keluar?",
+                        "Exit", JOptionPane.YES_NO_OPTION
+                ) == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
+                else {
+                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
 
         // deklarasi variabel untuk membuat frame Jenis
         this.jenisDao = jenisDao;
@@ -75,18 +90,33 @@ public class JenisFrame extends JFrame {
         kategoriComboBox = new JComboBox();
         kategoriComboBox.setBounds(150, 100, 315, 35);
 
+        // memanggil method populateComboKategori
+        populateComboKategori();
+        
         // membuat button simpan
         buttonSimpan = new JButton("Simpan");
         buttonSimpan.setBounds(15, 150, 100, 35);
 
+        // menambahkan action listener untuk button simpan
+        JenisButtonSimpan simpanActionListener = new JenisButtonSimpan(this, jenisDao);
+        buttonSimpan.addActionListener(simpanActionListener);
+        
         // membuat button ubah
         buttonUbah = new JButton("Ubah");
         buttonUbah.setBounds(120, 150, 100, 35);
-
+        
+        // menambahkan action listener untuk button ubah
+        JenisButtonUbah ubahActionListener = new JenisButtonUbah(this, jenisDao);
+        buttonUbah.addActionListener(ubahActionListener);
+        
         // membuat button hapus
         buttonHapus = new JButton("Hapus");
         buttonHapus.setBounds(225, 150, 100, 35);
 
+        // menambahkan action listener untuk button hapus
+        JenisButtonHapus hapusActionListener = new JenisButtonHapus(this, jenisDao);
+        buttonHapus.addActionListener(hapusActionListener);
+        
         // JTable untuk membuat tabel jenis
         jenisTable = new JTable();
         
@@ -118,6 +148,7 @@ public class JenisFrame extends JFrame {
     public void populateComboKategori() {
         this.kategoriList = kategoriDao.findAll();
         kategoriComboBox.removeAllItems();
+
         for(Kategori kategori : kategoriList) {
             kategoriComboBox.addItem(kategori.getNamaKategori());
         }
@@ -132,7 +163,7 @@ public class JenisFrame extends JFrame {
     public Kategori getKategori() {
         return this.kategoriList.get(kategoriComboBox.getSelectedIndex());
     }
-
+    
     // JTable untuk mendapatkan jenis
     public JTable getJenisTable() {
         return this.jenisTable;
@@ -140,7 +171,7 @@ public class JenisFrame extends JFrame {
 
     // TableModel untuk mendapatkan jenis
     public JenisTableModel getJenisTableModel() {
-        return jenisTableModel;
+        return this.jenisTableModel;
     }
 
     // Method untuk menampilkan pesan alert
@@ -162,6 +193,11 @@ public class JenisFrame extends JFrame {
     // method untuk menambahkan jenis
     public void addJenis(Jenis jenis) {
         jenisTableModel.add(jenis);
+    }
+
+    // method untuk mengubah jenis
+    public void updateJenis(Jenis jenis, int row) {
+        jenisTableModel.update(jenis, row);
     }
     
     // method untuk menghapus jenis
