@@ -20,11 +20,11 @@ public class PoinTableModel extends AbstractTableModel {
     private String[] columnNames = {"Jumlah Poin", "Nama Kategori"};
 
     // List yang berisi data yang akan dimasukkan ke dalam tabel
-    private List<Poin> data;
+    private List<Poin> list;
 
     // Konstruktor dari class PoinTableModel
-    public PoinTableModel(List<Poin> data) {
-        this.data = data;
+    public PoinTableModel(List<Poin> list) {
+        this.list = list;
     }
 
     // Method getColumnCount untuk mengembalikan jumlah kolom yang ada di dalam tabel
@@ -34,7 +34,7 @@ public class PoinTableModel extends AbstractTableModel {
 
     // Method getRowCount untuk mengembalikan jumlah baris yang ada di dalam tabel
     public int getRowCount() {
-        return data.size();
+        return list.size();
     }
 
     // Method getColumnName untuk mengembalikan nama kolom yang ada di dalam tabel
@@ -44,9 +44,7 @@ public class PoinTableModel extends AbstractTableModel {
 
     // Method getValueAt untuk mengembalikan nilai yang ada di dalam tabel
     public Object getValueAt(int row, int col) {
-        Poin poin = data.get(row);
-        // String value = "";
-        // int valueInt = 0;
+        Poin poin = list.get(row);
 
         switch (col) {
             case 0:
@@ -65,25 +63,25 @@ public class PoinTableModel extends AbstractTableModel {
     }
 
     // Method untuk mendapatkan objek yang ada di dalam tabel
-    public Poin getPoin(int row) {
-        return data.get(row);
+    public Poin getPoinAt(int row) {
+        return list.get(row);
     }
 
     // Method add untuk menambahkan data ke dalam tabel
     public void add(Poin poin) {
-        data.add(poin);
+        list.add(poin);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
     }
 
     // Method update untuk mengubah data yang ada di dalam tabel
     public void update(Poin poin, int row) {
-        data.set(row, poin);
+        list.set(row, poin);
         fireTableRowsUpdated(row, row);
     }
     
     // Method delete untuk menghapus data dari tabel
     public void delete(int row) {
-        data.remove(row);
+        list.remove(row);
         fireTableRowsDeleted(row, row);
     }
 }

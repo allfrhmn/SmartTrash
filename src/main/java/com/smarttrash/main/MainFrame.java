@@ -44,22 +44,7 @@ public class MainFrame extends JFrame {
     private JButton buttonPoin;
 
     public MainFrame() {
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                if(JOptionPane.showConfirmDialog(
-                        MainFrame.this,
-                        "Apakah anda yakin ingin keluar?",
-                        "Exit", JOptionPane.YES_NO_OPTION
-                ) == JOptionPane.YES_OPTION) {
-                    System.exit(0);
-                }
-                else {
-                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-                }
-            }
-        });
-        
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(300,300);
 
         this.titleLabel = new JLabel("Smart Trash Apps");

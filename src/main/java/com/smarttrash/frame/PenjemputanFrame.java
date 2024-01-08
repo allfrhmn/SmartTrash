@@ -21,6 +21,7 @@ import com.smarttrash.model.Penjemputan;
 import com.smarttrash.model.Masyarakat;
 import com.smarttrash.model.Petugas;
 import com.smarttrash.table.PenjemputanTableModel;
+import com.smarttrash.actionlistener.penjemputan.*;
 
 // class PenjemputanFrame untuk membuat frame Penjemputan
 public class PenjemputanFrame extends JFrame {
@@ -55,10 +56,7 @@ public class PenjemputanFrame extends JFrame {
     private JButton buttonSimpan;
     private JButton buttonUbah;
     private JButton buttonHapus;
-    private JButton buttonPrint;
-    private JButton buttonPreview;
-    private JButton buttonExport;
-
+    
     // constructor PenjemputanFrame untuk membuat frame Penjemputan
     public PenjemputanFrame(PenjemputanDao penjemputanDao, MasyarakatDao masyarakatDao, PetugasDao petugasDao) {
         // deklarasi variabel untuk membuat frame Penjemputan
@@ -124,6 +122,9 @@ public class PenjemputanFrame extends JFrame {
         // membuat label masyarakat
         masyarakatComboBox = new JComboBox();
         masyarakatComboBox.setBounds(200, 300, 350, 35);
+        
+        // memanggil method populateComboMasyarakat
+        populateComboMasyarakat();
 
         // membuat label petugas
         petugasLabel = new JLabel("Petugas");
@@ -132,35 +133,34 @@ public class PenjemputanFrame extends JFrame {
         // membuat label petugas
         petugasComboBox = new JComboBox();
         petugasComboBox.setBounds(200, 350, 350, 35);
+        
+        // memanggil method populateComboPetugas
+        populateComboPetugas();
 
         // membuat button simpan
         buttonSimpan = new JButton("Simpan");
         buttonSimpan.setBounds(15, 400, 100, 35);
+        
+        // action listener untuk button simpan
+        PenjemputanButtonSimpan simpanActionListener = new PenjemputanButtonSimpan(this, penjemputanDao);
+        buttonSimpan.addActionListener(simpanActionListener);
 
         // membuat button ubah
         buttonUbah = new JButton("Ubah");
         buttonUbah.setBounds(120, 400, 100, 35);
+        
+        // action listener untuk button ubah
+        PenjemputanButtonUbah ubahActionListener = new PenjemputanButtonUbah(this, penjemputanDao);
+        buttonUbah.addActionListener(ubahActionListener);
 
         // membuat button hapus
         buttonHapus = new JButton("Hapus");
         buttonHapus.setBounds(225, 400, 100, 35);
-
-        // membuat button print
-        buttonPrint = new JButton("Print");
-        buttonPrint.setBounds(330, 400, 100, 35);
-
-        // membuat button preview
-        buttonPreview = new JButton("Preview");
-        buttonPreview.setBounds(435, 400, 100, 35);
-
-        // membuat button export
-        buttonExport = new JButton("Export");
-        buttonExport.setBounds(540, 400, 100, 35);
-
-        // menambahkan action listener untuk button simpan
-        // PenjemputanButtonSimpanActionListener simpanActionListener = new PenjemputanButtonSimpanActionListener(this, penjemputanDao);
-        // buttonSimpan.addActionListener(simpanActionListener);
-
+        
+        // action listener untuk button hapus
+        PenjemputanButtonHapus hapusActionListener = new PenjemputanButtonHapus(this, penjemputanDao);
+        buttonHapus.addActionListener(hapusActionListener);
+        
         // JTable untuk membuat tabel penjemputan
         penjemputanTable = new JTable();
 
@@ -193,9 +193,6 @@ public class PenjemputanFrame extends JFrame {
         this.add(buttonSimpan);
         this.add(buttonUbah);
         this.add(buttonHapus);
-        this.add(buttonPrint);
-        this.add(buttonPreview);
-        this.add(buttonExport);
         this.add(scrollableTable);
 
         // mengatur ukuran frame
@@ -280,7 +277,7 @@ public class PenjemputanFrame extends JFrame {
     }
     
     // method untuk mengosongkan text field
-    public void clearTextField() {
+    public void clearForm() {
         this.tanggalPenjemputanTextField.setText("");
         this.statusPenjemputanTextField.setText("");
         this.keputusanKonfirmasiTextField.setText("");
@@ -294,7 +291,12 @@ public class PenjemputanFrame extends JFrame {
     public void addPenjemputan(Penjemputan penjemputan) {
         penjemputanTableModel.add(penjemputan);
     }
-
+    
+    // method updatePetugas untuk mengubah data petugas yang ada di dalam tabel
+    public void updatePenjemputan(Penjemputan penjemputan, int row) {
+        penjemputanTableModel.update(penjemputan, row);
+    }
+    
     // method deletePenjemputan untuk menghapus petugas dari tabel
     public void deletePenjemputan() {
         penjemputanTableModel.delete(penjemputanTable.getSelectedRow());
