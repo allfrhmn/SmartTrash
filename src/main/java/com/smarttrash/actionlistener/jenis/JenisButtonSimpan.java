@@ -35,7 +35,7 @@ public class JenisButtonSimpan implements ActionListener {
 
         // Validasi data
         if (nama.isEmpty() || kategori == null) {
-            jenisFrame.showAlertMessage("Nama dan kategori harus diisi!");
+            jenisFrame.showAlertMessage("Mohon lengkapi semua data!");
             return;
         }
 

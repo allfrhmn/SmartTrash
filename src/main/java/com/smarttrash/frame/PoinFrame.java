@@ -19,6 +19,7 @@ import com.smarttrash.dao.KategoriDao;
 import com.smarttrash.model.Poin;
 import com.smarttrash.model.Kategori;
 import com.smarttrash.table.PoinTableModel;
+import com.smarttrash.actionlistener.poin.*;
 
 // class PoinFrame untuk membuat frame Poin
 public class PoinFrame extends JFrame {
@@ -44,9 +45,9 @@ public class PoinFrame extends JFrame {
 
     // constructor PoinFrame untuk membuat frame Poin
     public PoinFrame(PoinDao poinDao, KategoriDao kategoriDao) {
-        // deklarasi variabel untuk membuat frame Poin
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        // deklarasi variabel untuk membuat frame Poin
         this.poinDao = poinDao;
         this.kategoriDao = kategoriDao;
 
@@ -54,7 +55,7 @@ public class PoinFrame extends JFrame {
         this.kategoriList = kategoriDao.findAll();
 
         // membuat label judul
-        titleLabel = new JLabel("Form Data Poin Sampah Elektronik");
+        titleLabel = new JLabel("Form Data Poin");
         titleLabel.setBounds(100, 10, 300, 20);
         titleLabel.setFont(new java.awt.Font("Arial", 1, 16));
 
@@ -73,32 +74,43 @@ public class PoinFrame extends JFrame {
         // membuat combo box kategori
         kategoriComboBox = new JComboBox();
         kategoriComboBox.setBounds(150, 100, 315, 35);
-        for (Kategori kategori : kategoriList) {
-            kategoriComboBox.addItem(kategori.getNamaKategori());
-        }
+
+        populateComboKategori();
 
         // membuat button simpan
         buttonSimpan = new JButton("Simpan");
         buttonSimpan.setBounds(15, 150, 100, 35);
 
+        // menambahkan action listener untuk button simpan
+        PoinButtonSimpan simpanActionListener = new PoinButtonSimpan(this, poinDao);
+        buttonSimpan.addActionListener(simpanActionListener);
+
         // membuat button ubah
         buttonUbah = new JButton("Ubah");
         buttonUbah.setBounds(120, 150, 100, 35);
+
+        // menambahkan action listener untuk button ubah
+        PoinButtonUbah ubahActionListener = new PoinButtonUbah(this, poinDao);
+        buttonUbah.addActionListener(ubahActionListener);
 
         // membuat button hapus
         buttonHapus = new JButton("Hapus");
         buttonHapus.setBounds(225, 150, 100, 35);
 
+        // menambahkan action listener untuk button hapus
+        PoinButtonHapus hapusActionListener = new PoinButtonHapus(this, poinDao);
+        buttonHapus.addActionListener(hapusActionListener);
+        
         // membuat tabel poin
         poinTable = new JTable();
+
+        // membuat table model poin
+        poinTableModel = new PoinTableModel(poinList);
+        poinTable.setModel(poinTableModel);
 
         // membuat scrollable table
         scrollableTable = new JScrollPane(poinTable);
         scrollableTable.setBounds(15, 200, 450, 200);
-
-        // // menambahkan action listener untuk button simpan
-        // PoinButtonSimpanActionListener simpanActionListener = new PoinButtonSimpanActionListener(this, poinDao);
-        // buttonSimpan.addActionListener(simpanActionListener);
 
         // menambahkan semua komponen ke dalam frame
         this.add(titleLabel);
@@ -119,9 +131,7 @@ public class PoinFrame extends JFrame {
 
     // method untuk mengisi combo box kategori
     public void populateComboKategori() {
-        this.kategoriList = kategoriDao.findAll();
-        kategoriComboBox.removeAllItems();
-        for(Kategori kategori : kategoriList) {
+        for (Kategori kategori : kategoriList) {
             kategoriComboBox.addItem(kategori.getNamaKategori());
         }
     }
@@ -131,11 +141,21 @@ public class PoinFrame extends JFrame {
         return Integer.parseInt(this.jumlahPoinTextField.getText());
     }
 
-    // method untuk mendapatkan kategori
-    public String getKategori() {
-        return this.kategoriComboBox.getSelectedItem().toString();
+    // getter untuk mendapatkan kategori
+    public Kategori getKategori() {
+        return this.kategoriList.get(kategoriComboBox.getSelectedIndex());
     }
-    
+
+    // JTable untuk membuat tabel poin
+    public JTable getPoinTable() {
+        return this.poinTable;
+    }
+
+    // TableModel untuk membuat table model poin
+    public PoinTableModel getPoinTableModel() {
+        return poinTableModel;
+    }
+
     // Method untuk menampilkan pesan alert
     public void showAlertMessage(String message) {
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
@@ -157,6 +177,11 @@ public class PoinFrame extends JFrame {
         poinTableModel.add(poin);
     }
 
+    // method updatePoin untuk mengubah data petugas di dalam tabel
+    public void updatePoin(Poin poin, int row) {
+        poinTableModel.update(poin, row);
+    }
+    
     // method deletePoin untuk menghapus petugas dari tabel
     public void deletePoin() {
         poinTableModel.delete(poinTable.getSelectedRow());

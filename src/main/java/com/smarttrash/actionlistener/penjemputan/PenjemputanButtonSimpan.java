@@ -43,7 +43,7 @@ public class PenjemputanButtonSimpan implements ActionListener {
 
         // Validasi data
         if (tanggalPenjemputan.isEmpty() || statusPenjemputan.isEmpty() || keputusanKonfirmasi.isEmpty() || tanggalKonfirmasi.isEmpty() || tanggalRiwayat.isEmpty() || masyarakat == null || petugas == null) {
-            penjemputanFrame.showAlertMessage("Mohon lengkapi data penjemputan.");
+            penjemputanFrame.showAlertMessage("Mohon lengkapi semua data!");
             return;
         }
 
@@ -62,11 +62,11 @@ public class PenjemputanButtonSimpan implements ActionListener {
 
         // Menangani hasil operasi insert
         if (result >= 0) {
-            penjemputanFrame.showSuccessMessage("Data berhasil disimpan.");
+            penjemputanFrame.showSuccessMessage("Data berhasil disimpan!");
             penjemputanFrame.addPenjemputan(penjemputan);
             penjemputanFrame.clearForm();
         } else {
-            penjemputanFrame.showAlertMessage("Terjadi kesalahan saat menyimpan data.");
+            penjemputanFrame.showAlertMessage("Data gagal disimpan!");
         }
     }
 }

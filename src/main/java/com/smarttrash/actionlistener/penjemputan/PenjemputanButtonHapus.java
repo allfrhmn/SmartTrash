@@ -48,7 +48,7 @@ public class PenjemputanButtonHapus implements ActionListener {
 
         // Menangani hasil operasi delete
         if (result >= 0) {
-            penjemputanFrame.showSuccessMessage("Data berhasil dihapus.");
+            penjemputanFrame.showSuccessMessage("Data berhasil dihapus!");
             penjemputanFrame.getPenjemputanTableModel().delete(selectedRow);
             penjemputanFrame.clearForm();
         } else {

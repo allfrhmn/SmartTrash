@@ -38,14 +38,16 @@ public class JenisButtonUbah implements ActionListener {
 
         // Validasi data
         if (nama.isEmpty() || kategori == null) {
-            jenisFrame.showAlertMessage("Pilih data yang akan diubah!");
+            jenisFrame.showAlertMessage("Mohon lengkapi semua data!");
             return;
         }
 
         // Mendapatkan baris yang dipilih di tabel
         int selectedRow = jenisFrame.getJenisTable().getSelectedRow();
+        
+        // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            jenisFrame.showAlertMessage("Pilih baris yang ingin diubah.");
+            jenisFrame.showAlertMessage("Pilih data yang akan diubah!");
             return;
         }
 
@@ -63,7 +65,7 @@ public class JenisButtonUbah implements ActionListener {
             jenisFrame.getJenisTableModel().update(jenis, selectedRow);
             jenisFrame.clearForm(); 
         } else {
-            jenisFrame.showAlertMessage("Terjadi kesalahan saat mengubah data.");
+            jenisFrame.showAlertMessage("Data gagal diubah!");
         }
     }
 }
