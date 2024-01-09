@@ -49,9 +49,6 @@ public class PetugasFrame extends JFrame {
     private JButton buttonSimpan;
     private JButton buttonUbah;
     private JButton buttonHapus;
-    private JButton buttonPrint;
-    private JButton buttonPreview;
-    private JButton buttonExport;
 
     // constructor PetugasFrame untuk membuat frame Petugas
     public PetugasFrame(PetugasDao petugasDao) {
@@ -110,10 +107,6 @@ public class PetugasFrame extends JFrame {
         buttonSimpan = new JButton("Simpan");
         buttonSimpan.setBounds(15, 300, 100, 35);
 
-        // Action Listener untuk membuat tombol Simpan
-//        PetugasButtonSimpanActionListener simpanActionListener = new PetugasButtonSimpanActionListener(this, petugasDao);
-//        buttonSimpan.addActionListener(simpanActionListener);
-
         // JButton untuk membuat tombol Ubah
         buttonUbah = new JButton("Ubah");
         buttonUbah.setBounds(120, 300, 100, 35);
@@ -121,30 +114,18 @@ public class PetugasFrame extends JFrame {
         // JButton untuk membuat tombol Hapus
         buttonHapus = new JButton("Hapus");
         buttonHapus.setBounds(225, 300, 100, 35);
-
-        // JButton untuk membuat tombol Print
-        buttonPrint = new JButton("Print");
-        buttonPrint.setBounds(330, 300, 100, 35);
-
-        // JButton untuk membuat tombol Preview
-        buttonPreview = new JButton("Preview");
-        buttonPreview.setBounds(435, 300, 100, 35);
-
-        // JButton untuk membuat tombol Export
-        buttonExport = new JButton("Export");
-        buttonExport.setBounds(540, 300, 100, 35);
         
         // Action Listener untuk membuat tombol Simpan
-            PetugasButtonSimpan simpanActionListener = new PetugasButtonSimpan(this, petugasDao);
-            buttonSimpan.addActionListener(simpanActionListener);
+        PetugasButtonSimpan simpanActionListener = new PetugasButtonSimpan(this, petugasDao);
+        buttonSimpan.addActionListener(simpanActionListener);
 
         // Action Listener untuk membuat tombol Ubah
-           PetugasButtonUbah ubahActionListener = new PetugasButtonUbah(this, petugasDao);
-           buttonUbah.addActionListener(ubahActionListener);
+        PetugasButtonUbah ubahActionListener = new PetugasButtonUbah(this, petugasDao);
+        buttonUbah.addActionListener(ubahActionListener);
 
         // Action Listener untuk membuat tombol Hapus
-           PetugasButtonHapus hapusActionListener = new PetugasButtonHapus(this, petugasDao);
-           buttonHapus.addActionListener(hapusActionListener);
+        PetugasButtonHapus hapusActionListener = new PetugasButtonHapus(this, petugasDao);
+        buttonHapus.addActionListener(hapusActionListener);
 
         // JTable untuk membuat tabel Petugas
         petugasTable = new JTable();
@@ -174,9 +155,6 @@ public class PetugasFrame extends JFrame {
         this.add(buttonSimpan);
         this.add(buttonUbah);
         this.add(buttonHapus);
-        this.add(buttonPrint);
-        this.add(buttonPreview);
-        this.add(buttonExport);
         this.add(scrollableTable);
         
         // mengatur ukuran frame

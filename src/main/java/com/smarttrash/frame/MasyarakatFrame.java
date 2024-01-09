@@ -42,9 +42,6 @@ public class MasyarakatFrame extends JFrame {
     private JButton buttonSimpan;
     private JButton buttonUbah;
     private JButton buttonHapus;
-    private JButton buttonPrint;
-    private JButton buttonPreview;
-    private JButton buttonExport;
 
     // constructor MasyarakatFrame untuk membuat frame Masyarakat
     public MasyarakatFrame(MasyarakatDao masyarakatDao) {
@@ -110,19 +107,7 @@ public class MasyarakatFrame extends JFrame {
         // JButton untuk membuat tombol Hapus
         buttonHapus = new JButton("Hapus");
         buttonHapus.setBounds(225, 300, 100, 35);
-        
-        // JButton untuk membuat tombol Print
-        buttonPrint = new JButton("Print");
-        buttonPrint.setBounds(330, 300, 100, 35);
-
-        // JButton untuk membuat tombol Preview
-        buttonPreview = new JButton("Preview");
-        buttonPreview.setBounds(435, 300, 100, 35);
-
-        // JButton untuk membuat tombol Export
-        buttonExport = new JButton("Export");
-        buttonExport.setBounds(540, 300, 100, 35);
-        
+                
         // Action Listener untuk membuat tombol Hapus
         MasyarakatButtonHapus hapusActionListener = new MasyarakatButtonHapus(this, masyarakatDao);
         buttonHapus.addActionListener(hapusActionListener);
@@ -163,9 +148,6 @@ public class MasyarakatFrame extends JFrame {
         this.add(buttonSimpan);
         this.add(buttonUbah);
         this.add(buttonHapus);
-        this.add(buttonPrint);
-        this.add(buttonPreview);
-        this.add(buttonExport);
         this.add(scrollableTable);
         
         // mengatur ukuran Swing
