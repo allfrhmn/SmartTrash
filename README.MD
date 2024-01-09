@@ -1,6 +1,6 @@
 # SmartTrash Application
 
-## SmartTrash Member
+## Our Members
  1. Allfiandi Rahman **(Leader)**
  2. Acep Imam Hambali **(Member)**
  3. Emilia Paradila S **(Member)**
