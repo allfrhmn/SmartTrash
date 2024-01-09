@@ -26,8 +26,7 @@ public class MainFrame extends JFrame {
     private JenisFrame jenisFrame;
     private PenjemputanFrame penjemputanFrame;
     private PoinFrame poinFrame;
-    private MasyarakatReportFrame masyarakatReportFrame;
-    private PetugasReportFrame petugasReportFrame;
+    private ReportFrame reportFrame;
     
     private MasyarakatDao masyarakatDao;
     private PetugasDao petugasDao;
@@ -44,8 +43,7 @@ public class MainFrame extends JFrame {
     private JButton buttonKategori;
     private JButton buttonPenjemputan;
     private JButton buttonPoin;
-    private JButton buttonMasyarakatReport;
-    private JButton buttonPetugasReport;
+    private JButton buttonReport;
 
     public MainFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,15 +99,10 @@ public class MainFrame extends JFrame {
         this.buttonPoin = new JButton("Poin");
         this.buttonPoin.addActionListener(actionListener);
         this.add(buttonPoin);
-        
-        this.buttonMasyarakatReport = new JButton("Masyarakat Report");
-        this.buttonMasyarakatReport.addActionListener(actionListener);
-        this.add(buttonMasyarakatReport);
-        
-        this.buttonPetugasReport = new JButton("Petugas Report");
-        this.buttonPetugasReport.addActionListener(actionListener);
-        this.add(buttonPetugasReport);
-        
+               
+        this.buttonReport = new JButton("Report");
+        this.buttonReport.addActionListener(actionListener);
+        this.add(buttonReport);
     }
     
     public JButton getButtonMasyarakat() {
@@ -136,12 +129,8 @@ public class MainFrame extends JFrame {
         return buttonPoin;
     }
     
-    public JButton getButtonMasyarakatReport() {
-        return buttonMasyarakatReport;
-    }
-    
-    public JButton getButtonPetugasReport() {
-        return buttonPetugasReport;
+    public JButton getButtonReport() {
+        return buttonReport;
     }
     
     public void showMasyarakatFrame() {
@@ -186,14 +175,9 @@ public class MainFrame extends JFrame {
         poinFrame.setVisible(true);
     }
     
-    public void showMasyarakatReportFrame() {
-        if(masyarakatReportFrame == null) masyarakatReportFrame = new MasyarakatReportFrame();
-        masyarakatReportFrame.setVisible(true);
-    }
-    
-    public void showPetugasReportFrame() {
-        if(petugasReportFrame == null) petugasReportFrame = new PetugasReportFrame();
-        petugasReportFrame.setVisible(true);
+    public void showReportFrame() {
+        if(reportFrame == null) reportFrame = new ReportFrame();
+        reportFrame.setVisible(true);
     }
 
     public static void main(String[] args) {

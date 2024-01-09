@@ -17,12 +17,12 @@ import net.sf.jasperreports.engine.*;
 import com.smarttrash.db.MySqlConnection;
 import com.smarttrash.main.MainFrame;
 
-public class MasyarakatReportFrame extends javax.swing.JFrame {
+public class ReportFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MasyarakatReportFrame
      */
-    public MasyarakatReportFrame() {
+    public ReportFrame() {
         initComponents();
     }
 
@@ -35,9 +35,16 @@ public class MasyarakatReportFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LabelMasyarakatReport1 = new javax.swing.JLabel();
         LabelMasyarakatReport = new javax.swing.JLabel();
         ButtonExportMasyarakat = new javax.swing.JButton();
         ButtonPrintMasyarakat = new javax.swing.JButton();
+        LabelPetugasReport = new javax.swing.JLabel();
+        ButtonPrintPetugas = new javax.swing.JButton();
+        ButtonExportPetugas = new javax.swing.JButton();
+
+        LabelMasyarakatReport1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        LabelMasyarakatReport1.setText("Masyarakat Report");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,20 +65,41 @@ public class MasyarakatReportFrame extends javax.swing.JFrame {
             }
         });
 
+        LabelPetugasReport.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        LabelPetugasReport.setText("Petugas Report");
+
+        ButtonPrintPetugas.setText("Print");
+        ButtonPrintPetugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonPrintPetugasActionPerformed(evt);
+            }
+        });
+
+        ButtonExportPetugas.setText("Export");
+        ButtonExportPetugas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonExportPetugasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(LabelMasyarakatReport)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ButtonExportPetugas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonPrintPetugas))
+                    .addComponent(LabelPetugasReport)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ButtonExportMasyarakat)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ButtonPrintMasyarakat))
+                    .addComponent(LabelMasyarakatReport))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(ButtonExportMasyarakat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                .addComponent(ButtonPrintMasyarakat)
-                .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +110,13 @@ public class MasyarakatReportFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonExportMasyarakat)
                     .addComponent(ButtonPrintMasyarakat))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(LabelPetugasReport)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonExportPetugas)
+                    .addComponent(ButtonPrintPetugas))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,6 +177,61 @@ public class MasyarakatReportFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ButtonPrintMasyarakatActionPerformed
 
+    private void ButtonPrintPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPrintPetugasActionPerformed
+        // TODO add your handling code here:
+                try {
+            // reportPath digunakan untuk menyimpan path dari folder report
+            String reportPath = System.getProperty("user.dir") + File.separator + "report";
+            // atribut path digunakan untuk menyimpan path dari file PetugasReport.jrxml
+            String path = System.getProperty("user.dir") + File.separator + "report" + File.separator + "PetugasReport.jrxml";
+            // JasperReport digunakan untuk mengcompile file PetugasReport.jrxml
+            JasperReport jasperReport = JasperCompileManager.compileReport(path);
+
+            // map yang digunakan untuk menyimpan parameter yang akan digunakan pada file PetugasReport.jrxml
+            Map<String, Object> parameters = new HashMap<>();
+
+            // JasperPrint digunakan untuk mengisi file PetugasReport.jrxml dengan data dari database
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, MySqlConnection.getInstance().getConnection());
+
+            // File outDir digunakan untuk menyimpan file PetugasReport.pdf
+            File outDir = new File(System.getProperty("user.dir") + File.separator + "report");
+            outDir.mkdirs();
+
+            // JasperExportManager digunakan untuk mengekspor file PetugasReport.jrxml menjadi file PetugasReport.pdf
+            JasperExportManager.exportReportToPdfFile(jasperPrint, reportPath + File.separator + "PetugasReport.pdf");
+            // JOptionPane digunakan untuk menampilkan pesan bahwa export selesai
+            JOptionPane.showMessageDialog(this, "Export Selesai!");
+        }
+        catch (JRException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_ButtonPrintPetugasActionPerformed
+
+    private void ButtonExportPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonExportPetugasActionPerformed
+        // TODO add your handling code here:
+         try {
+            // reportPath digunakan untuk menyimpan path dari folder report
+            String reportPath = System.getProperty("user.dir") + File.separator + "report";
+            // atribut path digunakan untuk menyimpan path dari file PetugasReport.jrxml
+            String path = System.getProperty("user.dir") + File.separator + "report" + File.separator + "PetugasReport.jrxml";
+            // JasperReport digunakan untuk mengcompile file PetugasReport.jrxml
+            JasperReport jasperReport = JasperCompileManager.compileReport(path);
+
+            // map yang digunakan untuk menyimpan parameter yang akan digunakan pada file PetugasReport.jrxml
+            Map<String, Object> parameters = new HashMap<>();
+
+            // JasperPrint digunakan untuk mengisi file PetugasReport.jrxml dengan data dari database
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,
+                MySqlConnection.getInstance().getConnection());
+
+            // JasperPrintManager digunakan untuk mencetak file PetugasReport.jrxml
+            JasperPrintManager.printReport(jasperPrint, true);
+        }
+        catch (JRException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_ButtonExportPetugasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -160,27 +249,32 @@ public class MasyarakatReportFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MasyarakatReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MasyarakatReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MasyarakatReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MasyarakatReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ReportFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MasyarakatReportFrame().setVisible(true);
+                new ReportFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonExportMasyarakat;
+    private javax.swing.JButton ButtonExportPetugas;
     private javax.swing.JButton ButtonPrintMasyarakat;
+    private javax.swing.JButton ButtonPrintPetugas;
     private javax.swing.JLabel LabelMasyarakatReport;
+    private javax.swing.JLabel LabelMasyarakatReport1;
+    private javax.swing.JLabel LabelPetugasReport;
     // End of variables declaration//GEN-END:variables
 }
