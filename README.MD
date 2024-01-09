@@ -51,7 +51,7 @@ Untuk menggunakan aplikasi ini, Anda dapat mengikuti langkah-langkah berikut:
 7. Semua data akan ditampilkan dalam JTable.
 8. Jika Anda ingin mengubah data, pilih baris yang ingin diubah, lalu klik tombol **"Ubah"** dengan baik.
 9. Jika Anda ingin menghapus data, pilih baris yang ingin dihapus, lalu klik tombol **"Hapus"**.
-10. Untuk menyimpan file report pastikan anda harus menggunakan 2 menu yaitu **"Masyarakat Report"** dan **"Petugas Report"**.
+10. Untuk menyimpan file report pastikan anda harus menggunakan menu yaitu **"Report"**.
 
 ## Thanks To
 - Bapak Wanda Gusdya Purnama, ST.,MT
