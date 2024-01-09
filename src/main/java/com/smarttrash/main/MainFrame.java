@@ -26,6 +26,8 @@ public class MainFrame extends JFrame {
     private JenisFrame jenisFrame;
     private PenjemputanFrame penjemputanFrame;
     private PoinFrame poinFrame;
+    private MasyarakatReportFrame masyarakatReportFrame;
+    private PetugasReportFrame petugasReportFrame;
     
     private MasyarakatDao masyarakatDao;
     private PetugasDao petugasDao;
@@ -42,6 +44,8 @@ public class MainFrame extends JFrame {
     private JButton buttonKategori;
     private JButton buttonPenjemputan;
     private JButton buttonPoin;
+    private JButton buttonMasyarakatReport;
+    private JButton buttonPetugasReport;
 
     public MainFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -98,6 +102,14 @@ public class MainFrame extends JFrame {
         this.buttonPoin.addActionListener(actionListener);
         this.add(buttonPoin);
         
+        this.buttonMasyarakatReport = new JButton("Masyarakat Report");
+        this.buttonMasyarakatReport.addActionListener(actionListener);
+        this.add(buttonMasyarakatReport);
+        
+        this.buttonPetugasReport = new JButton("Petugas Report");
+        this.buttonPetugasReport.addActionListener(actionListener);
+        this.add(buttonPetugasReport);
+        
     }
     
     public JButton getButtonMasyarakat() {
@@ -123,7 +135,15 @@ public class MainFrame extends JFrame {
     public JButton getButtonPoin() {
         return buttonPoin;
     }
-
+    
+    public JButton getButtonMasyarakatReport() {
+        return buttonMasyarakatReport;
+    }
+    
+    public JButton getButtonPetugasReport() {
+        return buttonPetugasReport;
+    }
+    
     public void showMasyarakatFrame() {
         if(masyarakatFrame == null) {
             masyarakatFrame = new MasyarakatFrame(masyarakatDao);
@@ -164,6 +184,16 @@ public class MainFrame extends JFrame {
             poinFrame = new PoinFrame(poinDao, kategoriDao);
         }
         poinFrame.setVisible(true);
+    }
+    
+    public void showMasyarakatReportFrame() {
+        if(masyarakatReportFrame == null) masyarakatReportFrame = new MasyarakatReportFrame();
+        masyarakatReportFrame.setVisible(true);
+    }
+    
+    public void showPetugasReportFrame() {
+        if(petugasReportFrame == null) petugasReportFrame = new PetugasReportFrame();
+        petugasReportFrame.setVisible(true);
     }
 
     public static void main(String[] args) {

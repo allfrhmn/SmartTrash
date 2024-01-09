@@ -42,5 +42,11 @@ public class MainButton implements ActionListener {
         if(e.getSource() == mainFrame.getButtonPoin()) {
             mainFrame.showPoinFrame();
         }
+        if(e.getSource() == mainFrame.getButtonMasyarakatReport()) {
+            mainFrame.showMasyarakatReportFrame();
+        }
+        if(e.getSource() == mainFrame.getButtonPetugasReport()) {
+            mainFrame.showPetugasReportFrame();
+        }
     }    
 }
