@@ -54,8 +54,8 @@ Untuk menggunakan aplikasi ini, Anda dapat mengikuti langkah-langkah berikut:
 10. Untuk menyimpan file report pastikan anda harus menggunakan 2 menu yaitu **"Masyarakat Report"** dan **"Petugas Report"**.
 
 ## Thanks To
-- Mr. Wanda Gusdya Purnama, ST.,MT
-- Aditya Fataha Wijaya
+- Bapak Wanda Gusdya Purnama, ST.,MT
+- Aditya Fataha Dwijaya ST.
 
 ## Licenses
 **&copy; 2023-2024 SmartTrash. All rights reserved.**
