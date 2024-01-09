@@ -54,7 +54,7 @@ Untuk menggunakan aplikasi ini, Anda dapat mengikuti langkah-langkah berikut:
 10. Untuk menyimpan file report pastikan anda harus menggunakan 2 menu yaitu **"Masyarakat Report"** dan **"Petugas Report"**.
 
 ## Thanks To
-- Mr. Wanda Gusdya Purnama, S.T., M.T.
+- Mr. Wanda Gusdya Purnama, ST.,MT
 - Aditya Fataha Wijaya
 
 ## Licenses
