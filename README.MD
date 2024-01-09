@@ -11,7 +11,7 @@
 - Mata Kuliah : **Praktikum Pemrograman 2 (B)**
 - Kelompok: **5**
 
-## Penjelasan Mengenai Smarttrash
+## Penjelasan Mengenai SmartTrash
 
 SmartTrash adalah sebuah aplikasi berbasis Java yang dirancang untuk membantu pengguna dalam mengelola pendaftaran, jenis dan kategori sampah elektronik, serta proses penjemputan sampah elektronik dan poin. Aplikasi ini memiliki fitur-fitur seperti pengolahan data, validasi inputan, dan pencetakan laporan.
 
