@@ -53,7 +53,7 @@ public class PenjemputanButtonUbah implements ActionListener {
         
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            penjemputanFrame.showAlertMessage("Pilih data yang akan diubah!");
+            penjemputanFrame.showAlertMessage("Pilih baris yang akan diubah!");
             return;
         }
         

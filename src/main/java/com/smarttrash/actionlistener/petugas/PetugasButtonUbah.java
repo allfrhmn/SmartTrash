@@ -38,7 +38,7 @@ public class PetugasButtonUbah implements ActionListener {
 
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            petugasFrame.showAlertMessage("Pilih data yang akan diubah!");
+            petugasFrame.showAlertMessage("Pilih baris yang akan diubah!");
             return;
         }
 

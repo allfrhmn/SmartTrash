@@ -28,7 +28,7 @@ public class MasyarakatButtonUbah implements ActionListener {
         
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            masyarakatFrame.showAlertMessage("Pilih data yang akan diubah!");
+            masyarakatFrame.showAlertMessage("Pilih baris yang akan diubah!");
             return;
         }
 

@@ -47,7 +47,7 @@ public class JenisButtonUbah implements ActionListener {
         
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            jenisFrame.showAlertMessage("Pilih data yang akan diubah!");
+            jenisFrame.showAlertMessage("Pilih baris yang akan diubah!");
             return;
         }
 

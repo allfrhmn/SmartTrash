@@ -37,7 +37,7 @@ public class PoinButtonHapus implements ActionListener {
         
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            poinFrame.showAlertMessage("Pilih data yang akan dihapus!");
+            poinFrame.showAlertMessage("Pilih baris yang akan dihapus!");
             return;
         }
 
