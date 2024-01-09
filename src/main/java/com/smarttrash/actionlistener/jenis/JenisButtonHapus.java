@@ -15,7 +15,6 @@ import java.awt.event.*;
 import com.smarttrash.dao.JenisDao;
 import com.smarttrash.frame.JenisFrame;
 import com.smarttrash.model.Jenis;
-import com.smarttrash.model.Kategori;
 
 // Membuat class JenisButtonHapus yang berfungsi untuk mengatur button hapus yang ada di dalam database
 public class JenisButtonHapus implements ActionListener {
@@ -37,7 +36,7 @@ public class JenisButtonHapus implements ActionListener {
         
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            jenisFrame.showAlertMessage("Pilih data yang akan diubah!");
+            jenisFrame.showAlertMessage("Pilih baris yang akan dihapus!");
             return;
         }
 

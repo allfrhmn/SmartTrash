@@ -38,7 +38,7 @@ public class KategoriButtonHapus implements ActionListener {
 
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            kategoriFrame.showAlertMessage("Pilih data yang akan dihapus!");
+            kategoriFrame.showAlertMessage("Pilih baris yang akan dihapus!");
             return;
         }
 

@@ -71,8 +71,8 @@ public class PenjemputanFrame extends JFrame {
         this.petugasList = petugasDao.findAll();
 
         // membuat label judul
-        titleLabel = new JLabel("Data Penjemputan Sampah Elektronik");
-        titleLabel.setBounds(350, 10, 300, 20);
+        titleLabel = new JLabel("Form Data Penjemputan Sampah Elektronik");
+        titleLabel.setBounds(350, 10, 375, 30);
         titleLabel.setFont(new java.awt.Font("Arial", 1, 16));
 
         // membuat label tanggal penjemputan
@@ -168,7 +168,7 @@ public class PenjemputanFrame extends JFrame {
         scrollableTable = new JScrollPane(penjemputanTable);
 
         // menambahkan scrollable table ke dalam frame
-        scrollableTable.setBounds(15, 450, 1000, 300);
+        scrollableTable.setBounds(15, 450, 1000, 250);
 
         // membuat table model untuk penjemputan
         penjemputanTableModel = new PenjemputanTableModel(penjemputanList);

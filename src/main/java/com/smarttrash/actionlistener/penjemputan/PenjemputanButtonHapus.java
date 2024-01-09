@@ -36,7 +36,7 @@ public class PenjemputanButtonHapus implements ActionListener {
         
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            penjemputanFrame.showAlertMessage("Pilih data yang akan dihapus!");
+            penjemputanFrame.showAlertMessage("Pilih baris yang akan dihapus!");
             return;
         }
 
@@ -52,7 +52,7 @@ public class PenjemputanButtonHapus implements ActionListener {
             penjemputanFrame.getPenjemputanTableModel().delete(selectedRow);
             penjemputanFrame.clearForm();
         } else {
-            penjemputanFrame.showAlertMessage("Terjadi kesalahan saat menghapus data.");
+            penjemputanFrame.showAlertMessage("Data gagal dihapus!");
         }
     }
 }

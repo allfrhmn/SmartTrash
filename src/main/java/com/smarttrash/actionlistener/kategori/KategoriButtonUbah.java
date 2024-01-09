@@ -39,7 +39,7 @@ public class KategoriButtonUbah implements ActionListener {
         
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            kategoriFrame.showAlertMessage("Pilih data yang akan diubah!");
+            kategoriFrame.showAlertMessage("Pilih baris yang akan diubah!");
             return;
         }
 

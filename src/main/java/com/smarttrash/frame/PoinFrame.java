@@ -56,7 +56,7 @@ public class PoinFrame extends JFrame {
 
         // membuat label judul
         titleLabel = new JLabel("Form Data Poin");
-        titleLabel.setBounds(100, 10, 300, 20);
+        titleLabel.setBounds(175, 10, 300, 20);
         titleLabel.setFont(new java.awt.Font("Arial", 1, 16));
 
         // membuat label jumlah poin

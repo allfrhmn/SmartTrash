@@ -38,7 +38,7 @@ public class MasyarakatButtonHapus implements ActionListener {
 
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            masyarakatFrame.showAlertMessage("Pilih data yang akan dihapus!");
+            masyarakatFrame.showAlertMessage("Pilih baris yang akan dihapus!");
             return;
         }
 
@@ -50,7 +50,7 @@ public class MasyarakatButtonHapus implements ActionListener {
 
         // Menampilkan pesan sesuai hasil operasi
         if (result >= 0) {
-            masyarakatFrame.getMasyarakatTableModel().delete(selectedRow); // Menghapus data dari tabel
+            masyarakatFrame.getMasyarakatTableModel().delete(selectedRow);
             masyarakatFrame.showSuccessMessage("Data berhasil dihapus!");
         } else {
             masyarakatFrame.showAlertMessage("Gagal menghapus data!");

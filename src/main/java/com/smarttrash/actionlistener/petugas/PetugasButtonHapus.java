@@ -37,7 +37,7 @@ public class PetugasButtonHapus implements ActionListener {
 
         // Validasi: Memastikan baris terpilih
         if (selectedRow == -1) {
-            petugasFrame.showAlertMessage("Pilih data yang akan dihapus!");
+            petugasFrame.showAlertMessage("Pilih baris yang akan dihapus!");
             return;
         }
 
