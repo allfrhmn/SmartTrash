@@ -17,12 +17,12 @@ SmartTrash adalah sebuah aplikasi berbasis Java yang dirancang untuk membantu pe
 
 ## Alat Yang Digunakan
 
-> Bahasa Pemrograman: _**Java**_
-> Versi : _**JDK 20 & 21**_
-> Aplikasi : _**Laragon & Apache Netbeans IDE 19**_
-> Database: _**MySQL**_
-> Library/Maven: _**JDBC & JasperReport**_
-> Report : _**Jaspersoft Studio**_
+> 1. Bahasa Pemrograman: _**Java**_
+> 2. Versi : _**JDK 20 & 21**_
+> 3. Aplikasi : _**Laragon & Apache Netbeans IDE 19**_
+> 4. Database: _**MySQL**_
+> 5. Library: _**JDBC & JasperReport**_
+> 6. Report : _**Jaspersoft Studio**_
 
 ## Fitur
 1. Pendaftaran Masyarakat dan Petugas: Memungkinkan pengguna untuk mendaftarkan masyarakat dan petugas baru dengan informasi dasar.
